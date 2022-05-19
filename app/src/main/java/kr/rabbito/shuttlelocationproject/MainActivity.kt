@@ -11,26 +11,31 @@ import kr.rabbito.shuttlelocationproject.databinding.ActivityMainBinding
 import kr.rabbito.shuttlelocationproject.function.setChildEventListener
 
 class MainActivity : AppCompatActivity(), OnMapReadyCallback {
-        private var mBinding: ActivityMainBinding? = null
-        private val binding get() = mBinding!!
+    private var mBinding: ActivityMainBinding? = null
+    private val binding get() = mBinding!!
 
-        private lateinit var map: GoogleMap
-        private val postList = mutableListOf<Location>()
+    private lateinit var map: GoogleMap
+    private val postList = mutableListOf<Location>()
 
-        override fun onCreate(savedInstanceState: Bundle?) {
-            super.onCreate(savedInstanceState)
-            mBinding = ActivityMainBinding.inflate(layoutInflater)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        mBinding = ActivityMainBinding.inflate(layoutInflater)
 
-            setContentView(binding.root)
+        setContentView(binding.root)
 
-            val mapFragment = supportFragmentManager
-                .findFragmentById(R.id.map) as SupportMapFragment
-            mapFragment.getMapAsync(this)
+        binding.mainBtnPost.setOnClickListener {
+            var intent = Intent(this,CommunityActivity::class.java)
+            startActivity(intent)
         }
 
-        override fun onMapReady(googleMap: GoogleMap) {
-            map = googleMap
-            setChildEventListener(postList, map, "Driver/tuk")
-        }
+
+        val mapFragment = supportFragmentManager
+            .findFragmentById(R.id.map) as SupportMapFragment
+        mapFragment.getMapAsync(this)
+    }
+
+    override fun onMapReady(googleMap: GoogleMap) {
+        map = googleMap
+        setChildEventListener(postList, map, "Driver/tuk")
+    }
 }
-

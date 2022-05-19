@@ -4,25 +4,27 @@ import android.os.Parcel
 import android.os.Parcelable
 
 class Post(
-    postId: String,
-    postTitle: String,
-    postContent: String,
-    postPassword: String,
-    postDate: String
+    var postId: String ="",
+    var postTitle: String = "",
+    var postContent: String="",
+    var postPassword: String="",
+    var postDate: String=""
 ) : Parcelable {
-    constructor(parcel: Parcel) : this(
-        TODO("postId"),
-        TODO("postTitle"),
-        TODO("postMessage"),
-        TODO("postPassword"),
-        TODO("postDate")
-    ) {
-    }
 
-    constructor(): this("", "", "", "", "")
+    constructor(parcel: Parcel) : this(
+        parcel.readString()!!,
+        parcel.readString()!!,
+        parcel.readString()!!,
+        parcel.readString()!!,
+        parcel.readString()!!
+    )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
-
+        parcel.writeString(postId)
+        parcel.writeString(postTitle)
+        parcel.writeString(postContent)
+        parcel.writeString(postPassword)
+        parcel.writeString(postDate)
     }
 
     override fun describeContents(): Int {
@@ -38,4 +40,6 @@ class Post(
             return arrayOfNulls(size)
         }
     }
+
+
 }

@@ -1,0 +1,73 @@
+[33mcommit e0b0692c445683090fb12882907bd6ad39737c14[m[33m ([m[1;36mHEAD -> [m[1;32meddymango[m[33m, [m[1;31morigin/eddymango[m[33m)[m
+Author: eddymango <94836715+eddymango@users.noreply.github.com>
+Date:   Tue May 3 18:27:46 2022 +0900
+
+    MainActivity - Map 구현/ Gradle version 변경)
+
+[33mcommit d03f53cef7e0d1ad94ecdaa4ded571c804b446aa[m
+Author: eddymango <94836715+eddymango@users.noreply.github.com>
+Date:   Tue May 3 18:02:28 2022 +0900
+
+    Gradle version 7.0.3
+
+[33mcommit 69d001be97d65648027ca2ce90f2d9b15898fb27[m[33m ([m[1;31mthinkingdobby/master[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmaster[m[33m)[m
+Merge: b1becad 7302ce2
+Author: CHIHO <75599138+ThinkingDobby@users.noreply.github.com>
+Date:   Tue May 3 14:21:29 2022 +0900
+
+    Merge pull request #3 from ThinkingDobby/MapImplementation
+    
+    setChildEventListener 수정
+
+[33mcommit 7302ce2ee3402aa4a2816ea465a66571dca73a07[m[33m ([m[1;31morigin/MapImplementation[m[33m)[m
+Author: ThinkingDobby <chiho1221@naver.com>
+Date:   Tue May 3 14:17:07 2022 +0900
+
+    setChildEventListener 수정
+
+[33mcommit b1becad2c2805a5a5694e65db2cca68fe30c987c[m
+Author: ThinkingDobby <chiho1221@naver.com>
+Date:   Tue May 3 10:14:06 2022 +0900
+
+    pull test
+
+[33mcommit 7a51b9e08a0348333bd2535547a5cd2e6e0761ed[m
+Merge: 5ef3668 de2b201
+Author: CHIHO <75599138+ThinkingDobby@users.noreply.github.com>
+Date:   Tue May 3 10:10:30 2022 +0900
+
+    Merge pull request #1 from eddymango/eddymango
+    
+    test_2
+
+[33mcommit de2b2016833b9c7ac875ddb8f0bee5aaca54a408[m
+Author: eddymango <94836715+eddymango@users.noreply.github.com>
+Date:   Tue May 3 10:07:11 2022 +0900
+
+    test_2
+
+[33mcommit 5ef36685fae903663c07bf565353020689025039[m
+Author: ThinkingDobby <chiho1221@naver.com>
+Date:   Tue May 3 10:04:26 2022 +0900
+
+    Revert "실시간 정보 수신 구현"
+    
+    This reverts commit a83f50b64851c8599d7100ad0e44bce77c00a44e.
+
+[33mcommit 6b02c89096640c4ab06d2fb67ac2bba88aad7c1d[m
+Author: eddymango <94836715+eddymango@users.noreply.github.com>
+Date:   Tue May 3 09:51:34 2022 +0900
+
+    test_EDDYMANGO
+
+[33mcommit a83f50b64851c8599d7100ad0e44bce77c00a44e[m
+Author: ThinkingDobby <chiho1221@naver.com>
+Date:   Mon May 2 22:02:19 2022 +0900
+
+    실시간 정보 수신 구현
+
+[33mcommit 04d28f283d6258471c52e3bcdbe9be54093acc8b[m
+Author: ThinkingDobby <chiho1221@naver.com>
+Date:   Mon May 2 22:00:24 2022 +0900
+
+    First Commit
