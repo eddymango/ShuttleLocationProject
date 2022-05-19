@@ -45,7 +45,7 @@ class CommunityActivity : AppCompatActivity() {
 
     fun observerData(){
         postViewModel.fetchData().observe(this,  {
-            //adapter.setPostData(it)
+            adapter.setPostData(it)
             adapter.notifyDataSetChanged()
         })
     }
