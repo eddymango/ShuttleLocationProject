@@ -1,6 +1,7 @@
 package kr.rabbito.shuttlelocationproject
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -35,13 +36,16 @@ class PostActivity : AppCompatActivity() {
                 postData.postTitle = postEtvContent.text.toString()
                 postData.postPassword = postEtvPassword.text.toString()
                 postData.postId = ""
-                //var currentTime = System.currentTimeMillis()
-                //val dataFormat1 = SimpleDateFormat("YY-MM-DD-E")
+//                var currentTime = System.currentTimeMillis()
+//                val dataFormat1 = SimpleDateFormat("YY-MM-DD-E")
                 postData.postDate = "1월1일"//dataFormat1.format(currentTime)
             }
             val postId = ref.push().key!!
             ref.child(postId).setValue(postData)
             Toast.makeText(this@PostActivity, "ref.setValue 완료", Toast.LENGTH_SHORT).show()
+
+            val intent = Intent(this, CommunityActivity::class.java)
+            startActivity(intent)
 
         }
     }

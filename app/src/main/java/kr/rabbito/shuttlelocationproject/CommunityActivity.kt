@@ -34,19 +34,18 @@ class CommunityActivity : AppCompatActivity() {
 
 
         binding.commuBtnPost.setOnClickListener {
+
             val intent = Intent(this,PostActivity::class.java)
             startActivity(intent)
         }
     }
 
-
-
-
-
     fun observerData(){
+
         postViewModel.fetchData().observe(this,  {
             adapter.setPostData(it)
             adapter.notifyDataSetChanged()
+
         })
     }
 
