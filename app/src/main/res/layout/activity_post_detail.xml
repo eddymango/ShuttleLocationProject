@@ -4,82 +4,153 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorWhite"
     tools:context=".PostDetailActivity">
 
-    <TextView
-        android:id="@+id/postdetail_tv_title"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:text="title : "
-        android:textSize="40dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/postdetail_tv_content"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:text="content : "
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/postdetail_tv_title" />
-
-    <TextView
-        android:id="@+id/postdetail_tv_date"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Date : "
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/postdetail_tv_content" />
-
-    <TextView
-        android:id="@+id/postdetail_tv_password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="password : "
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/postdetail_tv_date" />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/postdetail_tv_commentdetail"
-        android:text="답변 내용 : "
-        app:layout_constraintTop_toBottomOf="@id/postdetail_tv_password"
-        app:layout_constraintRight_toRightOf="parent"/>
-
-
-    <Button
-        android:id="@+id/postdetail_btn_comment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="52dp"
-        android:text="댓글 등록하기 "
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <EditText
-        android:id="@+id/postdetail_et_comment"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:hint="댓글을 입력하세요 "
-        app:layout_constraintBottom_toTopOf="@id/postdetail_btn_comment"
-        app:layout_constraintLeft_toLeftOf="parent"
-        />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    <Button
-        android:id="@+id/postdetail_btn_delete"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="삭제하기"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/postdetail_cl_top"
+                android:layout_width="match_parent"
+                android:layout_height="68dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <Button
+                    android:id="@+id/postdetail_btn_back"
+                    android:layout_width="10dp"
+                    android:layout_height="22dp"
+                    android:layout_marginStart="22dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/icon_back"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/pretendard_medium"
+                    android:includeFontPadding="false"
+                    android:text="게시글 상세"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="@id/postdetail_btn_back"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/postdetail_btn_back" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            
+            <ImageView
+                android:id="@+id/postdetail_iv_content"
+                android:layout_width="334dp"
+                android:layout_height="437dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/postdetail_cl_top"
+                android:src="@drawable/detail_iv_rect_big"
+                android:layout_marginTop="17dp"/>
+
+            <TextView
+                android:id="@+id/postdetail_tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="27dp"
+                android:layout_marginStart="31dp"
+                android:text=""
+                android:fontFamily="@font/pretendard_semibold"
+                android:includeFontPadding="false"
+                android:textColor="@color/colorBlack"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="@id/postdetail_iv_content"
+                app:layout_constraintTop_toTopOf="@id/postdetail_iv_content" />
+
+            <TextView
+                android:id="@+id/postdetail_tv_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="36dp"
+                android:text=""
+                android:fontFamily="@font/pretendard_regular"
+                android:includeFontPadding="false"
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="@id/postdetail_tv_title"
+                app:layout_constraintTop_toBottomOf="@id/postdetail_tv_title"/>
+
+            <TextView
+                android:id="@+id/postdetail_tv_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:text=""
+                android:fontFamily="@font/pretendard_regular"
+                android:includeFontPadding="false"
+                android:textColor="@color/colorGray"
+                android:layout_marginEnd="31dp"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toEndOf="@id/postdetail_iv_content"
+                app:layout_constraintTop_toBottomOf="@id/postdetail_tv_title" />
+
+            <TextView
+                android:id="@+id/postdetail_tv_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="password : "
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/postdetail_iv_content" />
+
+            <TextView
+                android:id="@+id/postdetail_tv_commentdetail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="답변 내용 : "
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/postdetail_tv_password" />
+
+
+            <Button
+                android:id="@+id/postdetail_btn_comment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="52dp"
+                android:text="댓글 등록하기 "
+                app:layout_constraintTop_toBottomOf="@id/postdetail_iv_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <EditText
+                android:id="@+id/postdetail_et_comment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="댓글을 입력하세요 "
+                android:inputType="textPersonName"
+                app:layout_constraintBottom_toTopOf="@id/postdetail_btn_comment"
+                app:layout_constraintLeft_toLeftOf="parent" />
+
+            <Button
+                android:id="@+id/postdetail_btn_delete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="삭제하기"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -114,7 +114,3 @@ class PostDetailActivity : AppCompatActivity() {
         }
     }
 }
-
-fun CommentDelete(){
-    TODO("comment 삭제할 떄 User.mode에 따라 삭제?")
-}
