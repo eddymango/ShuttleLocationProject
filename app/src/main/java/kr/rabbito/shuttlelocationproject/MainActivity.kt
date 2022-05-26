@@ -70,7 +70,7 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
             map.moveCamera(CameraUpdateFactory.newLatLng(yeouido))
 
 
-            showRoute(map);
+            showRoute(map)
 
             setChildEventListener(postList, map, "Driver/tuk")
         }
