@@ -10,7 +10,7 @@ import kr.rabbito.shuttlelocationproject.R
 fun showMarker(googleMap: GoogleMap, driverName: String, latitude : Double, longitude : Double) {
     val makerOptions = MarkerOptions()
     makerOptions
-        .icon(BitmapDescriptorFactory.fromResource(R.drawable.main_icon_sb_menu))
+        .icon(BitmapDescriptorFactory.fromResource(R.drawable.main_icon_marker_bus))
         .position(LatLng(latitude, longitude))
         .title(driverName)
     googleMap.addMarker(makerOptions)

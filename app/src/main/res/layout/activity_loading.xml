@@ -4,63 +4,67 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoadingActivity">
+    tools:context=".LoadingActivity"
+    android:backgroundTint="@android:color/white">
 
     <ImageView
-        android:id="@+id/image1"
+        android:id="@+id/loading_Siheung_Rordmark"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/loading_siheung_wordmark"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="161dp"
         />
 
     <ImageView
-        android:id="@+id/image2"
+        android:id="@+id/loading_App_Icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:src="@drawable/ic_app_icon"
-        app:layout_constraintBottom_toTopOf="@+id/text3"
+        app:layout_constraintBottom_toTopOf="@+id/loading_text_wait"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text1"
+        app:layout_constraintTop_toBottomOf="@+id/loading_text_shuttle"
         tools:ignore="MissingConstraints" />
 
     <TextView
-        android:id="@+id/text1"
+        android:id="@+id/loading_text_shuttle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="28dp"
         android:text="셔틀 "
         android:textColor="#E87326"
         android:fontFamily="@font/suncheon_b"
-        app:layout_constraintEnd_toStartOf="@+id/text2"
-        app:layout_constraintTop_toBottomOf="@+id/image1"
+        android:includeFontPadding="false"
+        app:layout_constraintEnd_toStartOf="@+id/loading_text_location"
+        app:layout_constraintTop_toBottomOf="@+id/loading_Siheung_Rordmark"
         />
     <TextView
-        android:id="@+id/text2"
+        android:id="@+id/loading_text_location"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="28dp"
         android:text="위치 알리미"
         android:textColor="#163F7C"
         android:fontFamily="@font/suncheon_b"
+        android:includeFontPadding="false"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/image1"/>
+        app:layout_constraintTop_toBottomOf="@+id/loading_Siheung_Rordmark"/>
 
 
     <TextView
-        android:id="@+id/text3"
+        android:id="@+id/loading_text_wait"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="14dp"
         android:text="잠시만 기다려주세요..."
         android:textColor="#163F7C"
         android:fontFamily="@font/pretendard_regular"
+        android:includeFontPadding="false"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="25dp"
+        android:layout_marginBottom="28dp"
         android:gravity="center"
         />
 

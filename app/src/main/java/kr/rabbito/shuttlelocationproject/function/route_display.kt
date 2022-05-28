@@ -6,15 +6,15 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.PolylineOptions
 
-fun showRoute(googleMap: GoogleMap, route: MutableList<LatLng>){
+fun showRoute(googleMap: GoogleMap, route: Array<LatLng>){
     lateinit var polylineOptions: PolylineOptions
     lateinit var mMap: GoogleMap
     mMap = googleMap
     var arrayPoints = arrayListOf<LatLng>()
     //Clearbut = findViewById<Button>(R.id.butClear)
-    val lng2 = LatLng(37.620215, 126.824540)
+    //val lng2 = LatLng(37.620215, 126.824540)
     // 카메라 옮길 때 확대 축소 가능 newLatLngZoom
-    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(lng2, 16f))
+    //mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(lng2, 16f))
 
     // 경로 위치 배열 예시
     /**var route = arrayOf(LatLng(37.619232, 126.828336),LatLng(37.619757, 126.825937), LatLng(37.620215, 126.824540)
