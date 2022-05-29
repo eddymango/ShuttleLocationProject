@@ -7,12 +7,12 @@ import android.widget.Button
 import android.widget.EditText
 import kr.rabbito.shuttlelocationproject.R
 
-class DeleteDialog(context:Context) {
+class ManagerDialog(context:Context) {
 
     private val dialog  = Dialog(context)
 
     fun showDialog(){
-        dialog.setContentView(R.layout.delete_dialog)
+        dialog.setContentView(R.layout.manager_dialog)
         // dialog 크기 조절
         dialog.window!!.setLayout(
             WindowManager.LayoutParams.MATCH_PARENT,
