@@ -51,6 +51,11 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
                 val intent = Intent(this, CommunityActivity::class.java)
                 startActivity(intent)
             }
+
+            binding.mainBtnToPrefernces.setOnClickListener {
+                val intent = Intent(this,SettingActivity::class.java)
+                startActivity(intent)
+            }
         }
 
         override fun onMapReady(googleMap: GoogleMap) {

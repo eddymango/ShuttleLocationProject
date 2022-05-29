@@ -1,9 +1,13 @@
 package kr.rabbito.shuttlelocationproject
 
+import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ktx.database
@@ -22,11 +26,22 @@ class PostDetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+
+
+
+
         mBinding = ActivityPostDetailBinding.inflate(layoutInflater)
 
         setContentView(binding.root)
         Log.d(TAG,"PostDetailActivity called()")
 
+        val shared = getSharedPreferences("Mode", Context.MODE_PRIVATE)
+        val mode = shared.getString("mode","User")
+
+        if (mode != "Manager"){
+            binding.postdetailEtComment.visibility = View.INVISIBLE
+            binding.postdetailBtnComment.visibility = View.INVISIBLE
+        }
 
         //intent에 담긴 bundle -> post에 풀기
         val bundle = intent.extras
@@ -42,25 +57,7 @@ class PostDetailActivity : AppCompatActivity() {
 
         //deleteBtn -> deleteDialog show()
         binding.postdetailBtnDelete.setOnClickListener {
-            val dialog = DeleteDialog(this)
-            dialog.showDialog()
-            dialog.setOnClickListner(object:DeleteDialog.ButtonClickListener{
-                override fun onClicked(text: String) {
-                    val inputPassword = text.hashSHA256()
-                    Toast.makeText(this@PostDetailActivity, inputPassword, Toast.LENGTH_SHORT).show()
-                    if (inputPassword == post.postPassword ){
-                        //post 삭제
-                        postRef.child(post.postId).removeValue()
-                        //comment 삭제
-                        commentRef.child(post.postCommentId).removeValue()
-                        Toast.makeText(this@PostDetailActivity, "삭제 완료", Toast.LENGTH_SHORT).show()
-                        finish()
-                    }
-                    else{
-                        Toast.makeText(this@PostDetailActivity, "비밀번호가 틀렸습니다.", Toast.LENGTH_SHORT).show()
-                    }
-                }
-            })
+
         }
 
 
@@ -93,14 +90,54 @@ class PostDetailActivity : AppCompatActivity() {
             }
         }
 
-//
-//        //유저 권한 검사는 해당 액티비티에서 진행해야함
-//        if (User.mode -> manager){
-//            binding.postdetailBtnComment.visibility = View.ViSIBILE
-//        }
-//        else{
-//            binding.postdetailBtnComment.visibility = View.INViSIBILE
-//        }
+        var data = listOf("목록","수정하기","삭제하기")
+        var adapter = ArrayAdapter(this,android.R.layout.simple_list_item_1,data)
+        binding.postdetailSpnOption.adapter = adapter
+        binding.postdetailSpnOption.onItemSelectedListener = object: AdapterView.OnItemSelectedListener{
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                if (position == 1){
+                    var intent = Intent(this@PostDetailActivity,PostActivity::class.java)
+                    intent.putExtra("post",post)
+                    intent.putExtra("PostMode","Edit")
+                    intent.putExtra("PostId",post.postId)
+                    intent.putExtra("PostPassword",post.postPassword)
+                    startActivity(intent)
+
+                }
+                else if(position ==2){
+                    val dialog = DeleteDialog(this@PostDetailActivity)
+                    dialog.showDialog()
+                    dialog.setOnClickListner(object:DeleteDialog.ButtonClickListener{
+                        override fun onClicked(text: String) {
+                            val inputPassword = text.hashSHA256()
+                            Toast.makeText(this@PostDetailActivity, inputPassword, Toast.LENGTH_SHORT).show()
+                            if (inputPassword == post.postPassword ){
+                                //post 삭제
+                                postRef.child(post.postId).removeValue()
+                                //comment 삭제
+                                commentRef.child(post.postCommentId).removeValue()
+                                Toast.makeText(this@PostDetailActivity, "삭제 완료", Toast.LENGTH_SHORT).show()
+                                finish()
+                            }
+                            else{
+                                Toast.makeText(this@PostDetailActivity, "비밀번호가 틀렸습니다.", Toast.LENGTH_SHORT).show()
+                            }
+                        }
+                    })
+                }
+
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                TODO("Not yet implemented")
+            }
+
+        }
 
 
         //key == commentId / firebase upload
