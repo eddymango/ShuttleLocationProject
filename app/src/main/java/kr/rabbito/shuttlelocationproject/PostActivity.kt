@@ -22,15 +22,13 @@ class PostActivity : AppCompatActivity() {
 
         setContentView(binding.root)
 
-
-        var mode = intent.getStringExtra("PostMode")
+        val mode = intent.getStringExtra("PostMode") ?: "temp"
         if(mode == "Edit"){
-
             binding.postBtnPost.visibility = View.INVISIBLE
             binding.postBtnEdit.visibility = View.VISIBLE
 
-            var bundle = intent.extras
-            var tmpPost = bundle?.getParcelable<Post>("post")
+            val bundle = intent.extras
+            val tmpPost = bundle?.getParcelable<Post>("post")
             with(binding){
                 postEtTitle.setText(tmpPost?.postTitle)
                 postEtContent.setText(tmpPost?.postContent)

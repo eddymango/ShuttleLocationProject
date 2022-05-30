@@ -1,10 +1,13 @@
 package kr.rabbito.shuttlelocationproject
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
+import android.util.TypedValue
 import android.view.View
+import android.widget.RelativeLayout
 import android.widget.ZoomControls
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
@@ -24,6 +27,7 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
         private lateinit var map: GoogleMap
         private val postList = mutableListOf<Location>()
 
+        @SuppressLint("ResourceType")
         @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
         override fun onCreate(savedInstanceState: Bundle?) {
             super.onCreate(savedInstanceState)
@@ -47,6 +51,25 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
 //                val intent = Intent(this, PostActivity::class.java)
 //                startActivity(intent)
 //            }
+
+            // 오류 무시
+            val zoomControls = mapFragment.view!!.findViewById<View>(0x1)
+
+            if (zoomControls != null && zoomControls.layoutParams is RelativeLayout.LayoutParams) {
+                // ZoomControl is inside of RelativeLayout
+                val params_zoom = zoomControls.layoutParams as RelativeLayout.LayoutParams
+
+                params_zoom.addRule(RelativeLayout.ALIGN_PARENT_TOP)
+                params_zoom.addRule(RelativeLayout.CENTER_VERTICAL)
+
+                val margin = TypedValue.applyDimension(
+                    TypedValue.COMPLEX_UNIT_DIP, 16f,
+                    resources.displayMetrics
+                ).toInt()
+
+                val topMargin = resources.displayMetrics.heightPixels / 2 - 40
+                params_zoom.setMargins(margin, topMargin, margin, margin)
+            }
 
             binding.mainIconSbMenu.setOnClickListener {
                 val intent = Intent(this, DetailActivity::class.java)
