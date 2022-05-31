@@ -33,8 +33,6 @@ class DeleteDialog(context:Context) {
         cancelBtn.setOnClickListener {
             dialog.dismiss()
         }
-
-        dialog.show()
         dialog.show()
     }
     interface ButtonClickListener{

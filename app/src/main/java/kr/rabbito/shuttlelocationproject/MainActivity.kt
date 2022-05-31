@@ -1,10 +1,13 @@
 package kr.rabbito.shuttlelocationproject
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
+import android.util.TypedValue
 import android.view.View
+import android.widget.RelativeLayout
 import android.widget.ZoomControls
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
@@ -12,6 +15,7 @@ import com.google.android.gms.maps.*
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import kr.rabbito.shuttlelocationproject.data.Location
+import kr.rabbito.shuttlelocationproject.data.tuk_route
 import kr.rabbito.shuttlelocationproject.databinding.ActivityMainBinding
 import kr.rabbito.shuttlelocationproject.function.setChildEventListener
 import kr.rabbito.shuttlelocationproject.function.showRoute
@@ -23,12 +27,14 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
         private lateinit var map: GoogleMap
         private val postList = mutableListOf<Location>()
 
+        @SuppressLint("ResourceType")
         @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
         override fun onCreate(savedInstanceState: Bundle?) {
             super.onCreate(savedInstanceState)
             mBinding = ActivityMainBinding.inflate(layoutInflater)
 
             setContentView(binding.root)
+            overridePendingTransition(0, 0)
 
             window.apply {
                 decorView.systemUiVisibility =
@@ -47,8 +53,37 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
 //                startActivity(intent)
 //            }
 
+            // 오류 무시
+            val zoomControls = mapFragment.view!!.findViewById<View>(0x1)
+
+            if (zoomControls != null && zoomControls.layoutParams is RelativeLayout.LayoutParams) {
+                // ZoomControl is inside of RelativeLayout
+                val params_zoom = zoomControls.layoutParams as RelativeLayout.LayoutParams
+
+                params_zoom.addRule(RelativeLayout.ALIGN_PARENT_TOP)
+                params_zoom.addRule(RelativeLayout.CENTER_VERTICAL)
+
+                val margin = TypedValue.applyDimension(
+                    TypedValue.COMPLEX_UNIT_DIP, 16f,
+                    resources.displayMetrics
+                ).toInt()
+
+                val topMargin = resources.displayMetrics.heightPixels / 2 - 40
+                params_zoom.setMargins(margin, topMargin, margin, margin)
+            }
+
+            binding.mainIconSbMenu.setOnClickListener {
+                val intent = Intent(this, DetailActivity::class.java)
+                startActivity(intent)
+            }
+
             binding.mainBtnToCommunity.setOnClickListener {
                 val intent = Intent(this, CommunityActivity::class.java)
+                startActivity(intent)
+            }
+
+            binding.mainBtnToPrefernces.setOnClickListener {
+                val intent = Intent(this,SettingActivity::class.java)
                 startActivity(intent)
             }
         }
@@ -71,15 +106,16 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
             //map.moveCamera(CameraUpdateFactory.newLatLng(yeouido))
 
                 // 학교 셔틀 경로
-            var school_route = arrayOf(LatLng(37.337272, 126.736072), LatLng(37.340786, 126.730372),LatLng(37.343790, 126.733322)
-                , LatLng(37.345289, 126.734745), LatLng(37.347356,126.736804), LatLng(37.351476,126.740745)
-                ,LatLng(37.350695,126.743040), LatLng(37.350127,126.744053),LatLng(37.350846, 126.744857)
-                ,LatLng(37.351964,126.740970),LatLng(37.351479,126.740708), LatLng(37.345314, 126.734715)
-                ,LatLng(37.343800, 126.733302), LatLng(37.340248, 126.738970), LatLng(37.337272, 126.736072))
+            var school_route = tuk_route
 
 
             setChildEventListener(postList, map, "Driver/tuk")
             showRoute(map, school_route)
         }
+
+    override fun finish() {
+        super.finish()
+        overridePendingTransition(0, 0)
+    }
 }
 

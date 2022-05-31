@@ -3,34 +3,33 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/ShuttleLocationProject_V2/app/src/main/res/layout/activity_community.xml" value="0.264" />
-        <entry key="..\:/ShuttleLocationProject_V2/app/src/main/res/layout/activity_main.xml" value="0.1" />
-        <entry key="..\:/ShuttleLocationProject_V2/app/src/main/res/layout/activity_post.xml" value="0.1" />
-        <entry key="..\:/ShuttleLocationProject_V2/app/src/main/res/layout/activity_post_detail.xml" value="0.264" />
-        <entry key="..\:/ShuttleLocationProject_V2/app/src/main/res/layout/deletedialog.xml" value="0.1" />
-        <entry key="..\:/ShuttleLocationProject_V2/app/src/main/res/layout/post_card.xml" value="0.4" />
-        <entry key="..\:/Users/chiho/AndroidStudioProjects/ShuttleLocationProject/app/src/main/res/drawable-xxxhdpi/tv_d_buttontext.xml" value="0.353" />
-        <entry key="..\:/Users/chiho/AndroidStudioProjects/ShuttleLocationProject/app/src/main/res/drawable/d_post_btn_post.xml" value="0.4855" />
-        <entry key="..\:/Users/chiho/AndroidStudioProjects/ShuttleLocationProject/app/src/main/res/drawable/d_post_et_big.xml" value="0.363" />
-        <entry key="..\:/Users/chiho/AndroidStudioProjects/ShuttleLocationProject/app/src/main/res/drawable/d_post_et_regular.xml" value="0.363" />
-        <entry key="..\:/Users/chiho/AndroidStudioProjects/ShuttleLocationProject/app/src/main/res/drawable/post_btn_post_shadow.xml" value="0.3875" />
-        <entry key="..\:/Users/chiho/AndroidStudioProjects/ShuttleLocationProject/app/src/main/res/drawable/shadow_regular.xml" value="0.3875" />
-        <entry key="..\:/Users/chiho/AndroidStudioProjects/ShuttleLocationProject/app/src/main/res/layout/activity_community.xml" value="0.5166666666666667" />
-        <entry key="..\:/Users/chiho/AndroidStudioProjects/ShuttleLocationProject/app/src/main/res/layout/activity_get_location.xml" value="0.5166666666666667" />
-        <entry key="..\:/Users/chiho/AndroidStudioProjects/ShuttleLocationProject/app/src/main/res/layout/activity_main.xml" value="0.5166666666666667" />
-        <entry key="..\:/Users/chiho/AndroidStudioProjects/ShuttleLocationProject/app/src/main/res/layout/activity_post.xml" value="0.5166666666666667" />
-        <entry key="..\:/Users/chiho/AndroidStudioProjects/ShuttleLocationProject/app/src/main/res/layout/location_card.xml" value="0.44722222222222224" />
-        <entry key="..\:/Users/chiho/AndroidStudioProjects/ShuttleLocationProject/app/src/main/res/layout/post_card.xml" value="0.4276041666666667" />
-        <entry key="..\:/mobilekotlin/TeamProject/Team/ShuttleLocationProject/app/src/main/res/drawable/d_post_btn_post.xml" value="0.1025" />
-        <entry key="..\:/mobilekotlin/TeamProject/Team/ShuttleLocationProject/app/src/main/res/layout/activity_loading.xml" value="0.22" />
-        <entry key="..\:/mobilekotlin/TeamProject/Team/ShuttleLocationProject/app/src/main/res/layout/activity_main.xml" value="0.33" />
-        <entry key="..\:/mobilekotlin/TeamProject/Team/ShuttleLocationProject/app/src/main/res/layout/activity_post.xml" value="0.3515625" />
-        <entry key="..\:/mobilekotlin/TeamProject/Team/ShuttleLocationProject/app/src/main/res/layout/activity_post_detail.xml" value="0.3515625" />
-        <entry key="..\:/mobilekotlin/TeamProject/Team/ShuttleLocationProject/app/src/main/res/layout/delete_dialog.xml" value="0.36614583333333334" />
+        <entry key="..\:/ShuttleLocationProject_V2/app/src/main/res/layout/activity_main.xml" value="0.2484375" />
+        <entry key="..\:/ShuttleLocationProject_V2/app/src/main/res/layout/activity_post.xml" value="0.264" />
+        <entry key="..\:/ShuttleLocationProject_V2/app/src/main/res/layout/activity_post_detail.xml" value="0.39361702127659576" />
+        <entry key="..\:/ShuttleLocationProject_V2/app/src/main/res/layout/activity_setting.xml" value="0.1583710407239819" />
+        <entry key="..\:/ShuttleLocationProject_V2/app/src/main/res/layout/alram_dialog.xml" value="0.2" />
+        <entry key="..\:/ShuttleLocationProject_V2/app/src/main/res/layout/delete_dialog.xml" value="0.16666666666666666" />
+        <entry key="..\:/ShuttleLocationProject_V2/app/src/main/res/layout/manager_dialog.xml" value="0.1" />
+        <entry key="..\:/Users/chiho/AndroidStudioProjects/ShuttleLocationProject/app/src/main/res/drawable-xxxhdpi/tv_d_buttontext.xml" value="0.3475" />
+        <entry key="..\:/Users/chiho/AndroidStudioProjects/ShuttleLocationProject/app/src/main/res/drawable-xxxhdpi/tv_d_buttontext_primary.xml" value="0.3038095238095238" />
+        <entry key="..\:/Users/chiho/AndroidStudioProjects/ShuttleLocationProject/app/src/main/res/drawable/d_detail_btn_schedule.xml" value="0.319" />
+        <entry key="..\:/Users/chiho/AndroidStudioProjects/ShuttleLocationProject/app/src/main/res/drawable/d_main_btn_to_community.xml" value="0.299" />
+        <entry key="..\:/Users/chiho/AndroidStudioProjects/ShuttleLocationProject/app/src/main/res/drawable/d_main_to_community.xml" value="0.319" />
+        <entry key="..\:/Users/chiho/AndroidStudioProjects/ShuttleLocationProject/app/src/main/res/drawable/d_main_to_setting.xml" value="0.319" />
+        <entry key="..\:/Users/chiho/AndroidStudioProjects/ShuttleLocationProject/app/src/main/res/drawable/d_post_btn_post.xml" value="0.319" />
+        <entry key="..\:/Users/chiho/AndroidStudioProjects/ShuttleLocationProject/app/src/main/res/drawable/top_corner_radius.xml" value="0.319" />
+        <entry key="..\:/Users/chiho/AndroidStudioProjects/ShuttleLocationProject/app/src/main/res/layout/activity_community.xml" value="0.4009259259259259" />
+        <entry key="..\:/Users/chiho/AndroidStudioProjects/ShuttleLocationProject/app/src/main/res/layout/activity_detail.xml" value="0.3976851851851852" />
+        <entry key="..\:/Users/chiho/AndroidStudioProjects/ShuttleLocationProject/app/src/main/res/layout/activity_loading.xml" value="0.3976851851851852" />
+        <entry key="..\:/Users/chiho/AndroidStudioProjects/ShuttleLocationProject/app/src/main/res/layout/activity_main.xml" value="0.3976851851851852" />
+        <entry key="..\:/Users/chiho/AndroidStudioProjects/ShuttleLocationProject/app/src/main/res/layout/activity_post.xml" value="0.40324074074074073" />
+        <entry key="..\:/Users/chiho/AndroidStudioProjects/ShuttleLocationProject/app/src/main/res/layout/activity_post_detail.xml" value="0.3976851851851852" />
+        <entry key="..\:/Users/chiho/AndroidStudioProjects/ShuttleLocationProject/app/src/main/res/layout/activity_setting.xml" value="0.3976851851851852" />
+        <entry key="..\:/Users/chiho/AndroidStudioProjects/ShuttleLocationProject/app/src/main/res/layout/post_card.xml" value="0.45925925925925926" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="11" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

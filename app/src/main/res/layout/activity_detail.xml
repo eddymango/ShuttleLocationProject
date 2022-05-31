@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    tools:context=".DetailActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/detail_cl_top"
+        android:layout_width="match_parent"
+        android:layout_height="68dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/detail_btn_back"
+            android:layout_width="10dp"
+            android:layout_height="22dp"
+            android:layout_marginStart="22dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/icon_back"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/detail_tv_title_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="39dp"
+        android:fontFamily="@font/suncheon_b"
+        android:includeFontPadding="false"
+        android:shadowColor="#cccccc"
+        android:shadowDx="2"
+        android:shadowDy="4"
+        android:shadowRadius="10"
+        android:text="한국공학"
+        android:textColor="@color/colorAccent"
+        android:textSize="32sp"
+        app:layout_constraintEnd_toStartOf="@id/detail_tv_title_2"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/detail_tv_title_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="39dp"
+        android:layout_marginEnd="22dp"
+        android:fontFamily="@font/suncheon_b"
+        android:includeFontPadding="false"
+        android:shadowColor="#cccccc"
+        android:shadowDx="2"
+        android:shadowDy="4"
+        android:shadowRadius="10"
+        android:text="대학교"
+        android:textColor="@color/colorPrimary"
+        android:textSize="32sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/detail_iv_icon_tel"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:adjustViewBounds="true"
+        android:src="@drawable/detail_icon_tel"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintTop_toBottomOf="@id/detail_tv_title_1"/>
+
+    <TextView
+        android:id="@+id/detail_tv_tel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/pretendard_regular"
+        android:includeFontPadding="false"
+        android:text="010-1234-5678"
+        android:layout_marginStart="6dp"
+        android:textColor="@color/colorPrimary"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@id/detail_iv_icon_tel"
+        app:layout_constraintTop_toTopOf="@id/detail_iv_icon_tel"
+        app:layout_constraintBottom_toBottomOf="@id/detail_iv_icon_tel"/>
+    
+    <Button
+        android:id="@+id/detail_btn_schedule"
+        android:layout_width="126dp"
+        android:layout_height="68dp"
+        android:fontFamily="@font/pretendard_medium"
+        android:includeFontPadding="false"
+        android:text="배차 시간표"
+        android:textColor="@drawable/tv_d_buttontext_primary"
+        android:paddingTop="3dp"
+        android:paddingStart="3dp"
+        android:textSize="12sp"
+        android:background="@drawable/d_detail_btn_schedule"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/detail_tv_title_1"
+        android:layout_marginEnd="6dp"
+        android:layout_marginTop="2dp"/>
+
+    <ImageView
+        android:id="@+id/detail_btn_path"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/detail_btn_schedule"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@drawable/top_corner_radius"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
