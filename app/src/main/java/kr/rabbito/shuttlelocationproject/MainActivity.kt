@@ -92,25 +92,22 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
             map = googleMap
 
             // 나침판
-            map.uiSettings.isCompassEnabled = true
+            map.uiSettings.isCompassEnabled = false
             // 지도 화면 회전
-            map.uiSettings.isRotateGesturesEnabled = true
+            map.uiSettings.isRotateGesturesEnabled = false
             // 확대 축소(+-) 버튼
             map.uiSettings.isZoomControlsEnabled = true
 
             val start_loc = LatLng(37.345417,126.738568)
-            map.moveCamera(CameraUpdateFactory.newLatLngZoom(start_loc, 13f))
+            map.moveCamera(CameraUpdateFactory.newLatLngZoom(start_loc, 14.5f))
             // Add a marker in Sydney and move the camera
             //val yeouido = LatLng(37.521814, 126.923596)
             //map.addMarker(MarkerOptions().position(yeouido).title("Marker in Yeouido"))
             //map.moveCamera(CameraUpdateFactory.newLatLng(yeouido))
 
-                // 학교 셔틀 경로
-            var school_route = tuk_route
 
 
             setChildEventListener(postList, map, "Driver/tuk")
-            showRoute(map, school_route)
         }
 
     override fun finish() {
