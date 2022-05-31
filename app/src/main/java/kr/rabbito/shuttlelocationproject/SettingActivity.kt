@@ -29,7 +29,7 @@ class SettingActivity : AppCompatActivity() {
         val editor = shared.edit()
 
 
-        binding.button.setOnClickListener {
+        binding.settingClSettingAdmin.setOnClickListener {
             val dialog = ManagerDialog(this)
             dialog.showDialog()
             dialog.setOnClickListner(object:ManagerDialog.ButtonClickListener{
