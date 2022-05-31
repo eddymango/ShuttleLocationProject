@@ -16,6 +16,7 @@ class LoadingActivity : AppCompatActivity() {
         mBinding = ActivityLoadingBinding.inflate(layoutInflater)
 
         setContentView(binding.root)
+        overridePendingTransition(0, 0)
 
         startLoading()
     }
@@ -27,5 +28,10 @@ class LoadingActivity : AppCompatActivity() {
             finish()
             startActivity(intent)
         }, 1000)
+    }
+
+    override fun finish() {
+        super.finish()
+        overridePendingTransition(0, 0)
     }
 }

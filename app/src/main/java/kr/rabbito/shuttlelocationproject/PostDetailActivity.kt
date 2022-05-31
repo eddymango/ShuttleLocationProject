@@ -29,6 +29,7 @@ class PostDetailActivity : AppCompatActivity() {
         mBinding = ActivityPostDetailBinding.inflate(layoutInflater)
 
         setContentView(binding.root)
+        overridePendingTransition(0, 0)
         Log.d(TAG, "PostDetailActivity called()")
 
         val shared = getSharedPreferences("Mode", Context.MODE_PRIVATE)
@@ -154,5 +155,10 @@ class PostDetailActivity : AppCompatActivity() {
             commentRef.child(commentKey).setValue(comment)
             Toast.makeText(this, "Comment 등록 완료", Toast.LENGTH_SHORT).show()
         }
+    }
+
+    override fun finish() {
+        super.finish()
+        overridePendingTransition(0, 0)
     }
 }

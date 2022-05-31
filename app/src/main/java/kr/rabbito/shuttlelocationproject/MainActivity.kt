@@ -34,6 +34,7 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
             mBinding = ActivityMainBinding.inflate(layoutInflater)
 
             setContentView(binding.root)
+            overridePendingTransition(0, 0)
 
             window.apply {
                 decorView.systemUiVisibility =
@@ -109,5 +110,10 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
 
             setChildEventListener(postList, map, "Driver/tuk")
         }
+
+    override fun finish() {
+        super.finish()
+        overridePendingTransition(0, 0)
+    }
 }
 

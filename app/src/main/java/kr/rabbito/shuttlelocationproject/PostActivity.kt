@@ -21,6 +21,7 @@ class PostActivity : AppCompatActivity() {
         mBinding = ActivityPostBinding.inflate(layoutInflater)
 
         setContentView(binding.root)
+        overridePendingTransition(0, 0)
 
         val mode = intent.getStringExtra("PostMode") ?: "temp"
         if(mode == "Edit"){
@@ -81,5 +82,10 @@ class PostActivity : AppCompatActivity() {
         }
 
 
+    }
+
+    override fun finish() {
+        super.finish()
+        overridePendingTransition(0, 0)
     }
 }

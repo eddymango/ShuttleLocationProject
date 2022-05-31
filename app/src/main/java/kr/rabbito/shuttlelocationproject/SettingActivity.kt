@@ -23,6 +23,7 @@ class SettingActivity : AppCompatActivity() {
         mBinding = ActivitySettingBinding.inflate(layoutInflater)
 
         setContentView(binding.root)
+        overridePendingTransition(0, 0)
 
         val shared = getSharedPreferences("Mode", Context.MODE_PRIVATE)
         val editor = shared.edit()
@@ -56,5 +57,14 @@ class SettingActivity : AppCompatActivity() {
                 }
             })
         }
+
+        binding.settingBtnBack.setOnClickListener {
+            finish()
+        }
+    }
+
+    override fun finish() {
+        super.finish()
+        overridePendingTransition(0, 0)
     }
 }

@@ -24,6 +24,7 @@ class CommunityActivity : AppCompatActivity() {
         mBinding = ActivityCommunityBinding.inflate(layoutInflater)
 
         setContentView(binding.root)
+        overridePendingTransition(0, 0)
         //Log.d(TAG,"CommunityActivity called()")
         //postList -> RecyclerView에 나올 post 항목들 저장하는 공간
         val postList = mutableListOf<Post>()
@@ -114,5 +115,10 @@ class CommunityActivity : AppCompatActivity() {
                     error.toException().printStackTrace()
                 }
             })
+    }
+
+    override fun finish() {
+        super.finish()
+        overridePendingTransition(0, 0)
     }
 }
