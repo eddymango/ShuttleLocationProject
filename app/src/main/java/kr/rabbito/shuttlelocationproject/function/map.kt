@@ -6,6 +6,7 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import kr.rabbito.shuttlelocationproject.R
+import java.lang.Thread.sleep
 
 fun showMarker(googleMap: GoogleMap, driverName: String, latitude : Double, longitude : Double) {
     val makerOptions = MarkerOptions()

@@ -63,6 +63,8 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
             // 확대 축소(+-) 버튼
             map.uiSettings.isZoomControlsEnabled = true
 
+            val start_loc = LatLng(37.345417,126.738568)
+            map.moveCamera(CameraUpdateFactory.newLatLngZoom(start_loc, 13f))
             // Add a marker in Sydney and move the camera
             //val yeouido = LatLng(37.521814, 126.923596)
             //map.addMarker(MarkerOptions().position(yeouido).title("Marker in Yeouido"))
@@ -75,9 +77,9 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
                 ,LatLng(37.351964,126.740970),LatLng(37.351479,126.740708), LatLng(37.345314, 126.734715)
                 ,LatLng(37.343800, 126.733302), LatLng(37.340248, 126.738970), LatLng(37.337272, 126.736072))
 
-            showRoute(map, school_route)
 
             setChildEventListener(postList, map, "Driver/tuk")
+            showRoute(map, school_route)
         }
 }
 
