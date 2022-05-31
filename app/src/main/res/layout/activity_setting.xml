@@ -19,12 +19,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <Button
-                android:id="@+id/button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Button" />
-
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/setting_cl_top"
                 android:layout_width="match_parent"
@@ -57,52 +51,118 @@
                     app:layout_constraintTop_toTopOf="@id/setting_btn_back" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <ImageView
-                android:id="@+id/setting_iv_content_info"
-                android:layout_width="360dp"
-                android:layout_height="127dp"
-                android:layout_marginTop="6dp"
-                android:src="@drawable/d_setting_btn_item"
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/setting_cl_setting_admin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/setting_cl_top" />
+                app:layout_constraintTop_toBottomOf="@id/setting_cl_top">
 
-            <ImageView
-                android:id="@+id/setting_iv_icon_info"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_marginStart="45dp"
-                android:src="@drawable/setting_icon_info"
-                app:layout_constraintBottom_toBottomOf="@id/setting_iv_content_info"
-                app:layout_constraintStart_toStartOf="@id/setting_iv_content_info"
-                app:layout_constraintTop_toTopOf="@id/setting_iv_content_info" />
+                <ImageView
+                    android:id="@+id/setting_iv_content_admin"
+                    android:layout_width="360dp"
+                    android:layout_height="127dp"
+                    android:layout_marginTop="6dp"
+                    android:src="@drawable/d_setting_btn_item"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/setting_iv_icon_admin"
+                    android:layout_width="28dp"
+                    android:layout_height="14dp"
+                    android:layout_marginStart="40dp"
+                    android:src="@drawable/setting_icon_key"
+                    app:layout_constraintBottom_toBottomOf="@id/setting_iv_content_admin"
+                    app:layout_constraintStart_toStartOf="@id/setting_iv_content_admin"
+                    app:layout_constraintTop_toTopOf="@id/setting_iv_content_admin" />
 
 
-            <TextView
-                android:layout_width="wrap_content"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="86dp"
+                    android:layout_marginTop="47dp"
+                    android:fontFamily="@font/pretendard_semibold"
+                    android:includeFontPadding="false"
+                    android:text="관리자 로그인"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="@id/setting_iv_content_admin"
+                    app:layout_constraintTop_toTopOf="@id/setting_iv_content_admin" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="86dp"
+                    android:layout_marginBottom="41dp"
+                    android:fontFamily="@font/pretendard_regular"
+                    android:includeFontPadding="false"
+                    android:text="게시물 답변 작성 권한을 획득합니다."
+                    android:textColor="@color/colorDarkGray"
+                    android:textSize="13sp"
+                    app:layout_constraintBottom_toBottomOf="@id/setting_iv_content_admin"
+                    app:layout_constraintStart_toStartOf="@id/setting_iv_content_admin" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/setting_cl_setting_info"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="86dp"
-                android:layout_marginTop="47dp"
-                android:fontFamily="@font/pretendard_semibold"
-                android:includeFontPadding="false"
-                android:text="앱 정보 확인"
-                android:textColor="@color/colorBlack"
-                android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="@id/setting_iv_content_info"
-                app:layout_constraintTop_toTopOf="@id/setting_iv_content_info" />
+                android:layout_marginTop="122dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/setting_cl_top">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="86dp"
-                android:layout_marginBottom="41dp"
-                android:fontFamily="@font/pretendard_regular"
-                android:includeFontPadding="false"
-                android:text="앱 정책 및 버전 정보를 확인합니다."
-                android:textColor="@color/colorDarkGray"
-                android:textSize="13sp"
-                app:layout_constraintBottom_toBottomOf="@id/setting_iv_content_info"
-                app:layout_constraintStart_toStartOf="@id/setting_iv_content_info" />
+                <ImageView
+                    android:id="@+id/setting_iv_content_info"
+                    android:layout_width="360dp"
+                    android:layout_height="127dp"
+                    android:src="@drawable/d_setting_btn_item"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/setting_iv_icon_info"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginStart="45dp"
+                    android:src="@drawable/setting_icon_info"
+                    app:layout_constraintBottom_toBottomOf="@id/setting_iv_content_info"
+                    app:layout_constraintStart_toStartOf="@id/setting_iv_content_info"
+                    app:layout_constraintTop_toTopOf="@id/setting_iv_content_info" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="86dp"
+                    android:layout_marginTop="47dp"
+                    android:fontFamily="@font/pretendard_semibold"
+                    android:includeFontPadding="false"
+                    android:text="앱 정보 확인"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="@id/setting_iv_content_info"
+                    app:layout_constraintTop_toTopOf="@id/setting_iv_content_info" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="86dp"
+                    android:layout_marginBottom="41dp"
+                    android:fontFamily="@font/pretendard_regular"
+                    android:includeFontPadding="false"
+                    android:text="앱 정책 및 버전 정보를 확인합니다."
+                    android:textColor="@color/colorDarkGray"
+                    android:textSize="13sp"
+                    app:layout_constraintBottom_toBottomOf="@id/setting_iv_content_info"
+                    app:layout_constraintStart_toStartOf="@id/setting_iv_content_info" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
