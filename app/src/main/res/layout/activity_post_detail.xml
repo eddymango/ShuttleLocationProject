@@ -46,18 +46,27 @@
                     android:textColor="@color/colorPrimary"
                     android:textSize="18sp"
                     app:layout_constraintBottom_toBottomOf="@id/postdetail_btn_back"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/postdetail_btn_edit"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@id/postdetail_btn_back" />
-
-                <Spinner
-                    android:id="@+id/postdetail_spn_option"
+                <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="280dp"
-                    android:layout_marginTop="24dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:id="@+id/postdetail_btn_edit"
+                    android:text ="수정"
+                    app:layout_constraintEnd_toStartOf="@id/postdetail_btn_delete"
+                    app:layout_constraintTop_toTopOf="parent"
+                    />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/postdetail_btn_delete"
+                    android:text="삭제"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+
             </androidx.constraintlayout.widget.ConstraintLayout>
             
             <ImageView
@@ -112,51 +121,38 @@
                 app:layout_constraintTop_toBottomOf="@id/postdetail_tv_title" />
 
             <TextView
-                android:id="@+id/postdetail_tv_password"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="password : "
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/postdetail_iv_content" />
-
-            <TextView
                 android:id="@+id/postdetail_tv_commentdetail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="답변 내용 : "
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/postdetail_tv_password" />
+                app:layout_constraintTop_toBottomOf="@+id/postdetail_iv_content" />
 
 
             <Button
                 android:id="@+id/postdetail_btn_comment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="52dp"
+                android:layout_marginTop="20dp"
                 android:text="댓글 등록하기 "
-                app:layout_constraintTop_toBottomOf="@id/postdetail_iv_content"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/postdetail_iv_content" />
 
             <EditText
                 android:id="@+id/postdetail_et_comment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="36dp"
                 android:hint="댓글을 입력하세요 "
                 android:inputType="textPersonName"
                 app:layout_constraintBottom_toTopOf="@id/postdetail_btn_comment"
-                app:layout_constraintLeft_toLeftOf="parent" />
-
-            <Button
-                android:id="@+id/postdetail_btn_delete"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="삭제하기"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

@@ -1,5 +1,7 @@
 package kr.rabbito.shuttlelocationproject.adapter
 
+import android.accounts.AccountManager.get
+import android.app.Activity
 import android.app.AlertDialog
 import android.app.Dialog
 import android.content.ContentValues.TAG
@@ -52,6 +54,7 @@ class PostAdapter(val context: Context,
             Log.d(TAG,"OnBindViewHolder called()")
 
             context.startActivity(intent)
+            (context as Activity).finish()
         }
 
         //RecyclerView LongClickListener 구현 -> 삭제

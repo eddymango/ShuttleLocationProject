@@ -40,6 +40,8 @@ class CommunityActivity : AppCompatActivity() {
         binding.communityBtnPost.setOnClickListener {
             val intent = Intent(this, PostActivity::class.java)
             startActivity(intent)
+            finish()
+
         }
         //Firebase 변화 감지
         FirebaseDatabase.getInstance().getReference("Community/Post")
