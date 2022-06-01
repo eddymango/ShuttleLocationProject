@@ -6,13 +6,17 @@ import android.view.WindowManager
 import android.widget.Button
 import android.widget.EditText
 import kr.rabbito.shuttlelocationproject.R
-
+//Setting
 class DeleteDialog(context:Context) {
 
     private val dialog  = Dialog(context)
-
     fun showDialog(){
         dialog.setContentView(R.layout.delete_dialog)
+        val editText = dialog.findViewById<EditText>(R.id.deletedialog_et_password)
+        val okBtn = dialog.findViewById<Button>(R.id.deletedialog_btn_delete)
+        val cancelBtn = dialog.findViewById<Button>(R.id.deletedialog_btn_cancel)
+
+
         // dialog 크기 조절
         dialog.window!!.setLayout(
             WindowManager.LayoutParams.MATCH_PARENT,
@@ -21,9 +25,6 @@ class DeleteDialog(context:Context) {
         // 바깥쪽 터치 -> dialog cancel
         dialog.setCancelable(true)
 
-        val editText = dialog.findViewById<EditText>(R.id.deletedialog_et_password)
-        val okBtn = dialog.findViewById<Button>(R.id.deletedialog_btn_delete)
-        val cancelBtn = dialog.findViewById<Button>(R.id.deletedialog_btn_cancel)
 
         okBtn.setOnClickListener {
             onClickListener.onClicked(editText.text.toString())

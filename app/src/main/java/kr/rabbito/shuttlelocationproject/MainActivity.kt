@@ -14,9 +14,12 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.maps.*
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 import kr.rabbito.shuttlelocationproject.data.Location
 import kr.rabbito.shuttlelocationproject.data.tuk_route
 import kr.rabbito.shuttlelocationproject.databinding.ActivityMainBinding
+import kr.rabbito.shuttlelocationproject.function.hashSHA256
 import kr.rabbito.shuttlelocationproject.function.setChildEventListener
 import kr.rabbito.shuttlelocationproject.function.showRoute
 
@@ -46,12 +49,16 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
             val mapFragment = supportFragmentManager
                 .findFragmentById(R.id.map) as SupportMapFragment
             mapFragment.getMapAsync(this)
+//비밀번호 firebase에 올리기
+//            Firebase.database.getReference("Manager").child("1").setValue("TEST1234".hashSHA256())
+//            Firebase.database.getReference("Manager").child("2").setValue("S1L2P3".hashSHA256())
+//            Firebase.database.getReference("Manager").child("3").setValue("1P12L23S3".hashSHA256())
+//            Firebase.database.getReference("Manager").child("4").setValue("T1E2ST".hashSHA256())
+//            Firebase.database.getReference("Manager").child("5").setValue("TEST".hashSHA256())
+//            Firebase.database.getReference("Manager").child("6").setValue("mm0k211".hashSHA256())
 
-            //postActivity -> communityActivity에서 btn 구현 완료
-//            binding.mainBtnToPost.setOnClickListener {
-//                val intent = Intent(this, PostActivity::class.java)
-//                startActivity(intent)
-//            }
+
+
 
             // 오류 무시
             val zoomControls = mapFragment.view!!.findViewById<View>(0x1)
