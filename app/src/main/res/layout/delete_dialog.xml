@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:hint="게시물 비밀번호를 입력하세요" />
+        android:hint="비밀번호를 입력하세요" />
 
     <LinearLayout
         android:layout_width="match_parent"
