@@ -13,6 +13,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import kr.rabbito.shuttlelocationproject.data.Comment
+import kr.rabbito.shuttlelocationproject.data.CommentDialog
 import kr.rabbito.shuttlelocationproject.data.DeleteDialog
 import kr.rabbito.shuttlelocationproject.data.Post
 import kr.rabbito.shuttlelocationproject.databinding.ActivityPostDetailBinding
@@ -42,7 +43,6 @@ class PostDetailActivity : AppCompatActivity() {
 
         //UserMode : User 일 경우 comment 관련 INVISIBLE
         if (loginMode != "Manager") {
-            binding.postdetailEtComment.visibility = View.INVISIBLE
             binding.postdetailBtnComment.visibility = View.INVISIBLE
             binding.postdetailBtnCommentdelete.visibility = View.INVISIBLE
 
@@ -144,13 +144,23 @@ class PostDetailActivity : AppCompatActivity() {
 
         //key == commentId / firebase upload
         binding.postdetailBtnComment.setOnClickListener {
-            postRef.child(post.postId).child("postCommentId").setValue(commentKey)
-            comment.postId = post.postId
-            comment.comment = binding.postdetailEtComment.text.toString()
-            comment.commentId = commentKey
-            commentRef.child(commentKey).setValue(comment)
-            Toast.makeText(this, "Comment 등록 완료", Toast.LENGTH_SHORT).show()
-            finish()
+
+            val dialog = CommentDialog(this@PostDetailActivity)
+
+            dialog.showDialog()
+            dialog.setOnClickListner(object : CommentDialog.ButtonClickListener {
+                override fun onClicked(text: String) {
+                    postRef.child(post.postId).child("postCommentId").setValue(commentKey)
+                    comment.postId = post.postId
+                    comment.comment = text
+                    comment.commentId = commentKey
+                    commentRef.child(commentKey).setValue(comment)
+                    Toast.makeText(this@PostDetailActivity, "Comment 등록 완료", Toast.LENGTH_SHORT).show()
+                    finish()
+
+                }
+            })
+
         }
         binding.postdetailBtnCommentdelete.setOnClickListener {
             if (binding.postdetailTvCommentdetail.text.toString() != ""){
