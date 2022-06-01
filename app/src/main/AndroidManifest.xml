@@ -34,7 +34,8 @@
             android:exported="true" />
         <activity
             android:name=".CommunityActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:launchMode="singleTask"/>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").

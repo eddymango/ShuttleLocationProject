@@ -5,6 +5,7 @@ import android.content.Context
 import android.view.WindowManager
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import kr.rabbito.shuttlelocationproject.R
 
 class ManagerDialog(context:Context) {
@@ -22,8 +23,8 @@ class ManagerDialog(context:Context) {
         dialog.setCancelable(true)
 
         val editText = dialog.findViewById<EditText>(R.id.deletedialog_et_password)
-        val okBtn = dialog.findViewById<Button>(R.id.deletedialog_btn_delete)
-        val cancelBtn = dialog.findViewById<Button>(R.id.deletedialog_btn_cancel)
+        val okBtn = dialog.findViewById<TextView>(R.id.deletedialog_btn_delete)
+        val cancelBtn = dialog.findViewById<TextView>(R.id.deletedialog_btn_cancel)
 
         okBtn.setOnClickListener {
             onClickListener.onClicked(editText.text.toString())

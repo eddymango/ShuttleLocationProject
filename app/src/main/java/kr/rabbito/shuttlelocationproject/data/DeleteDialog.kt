@@ -5,6 +5,7 @@ import android.content.Context
 import android.view.WindowManager
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import kr.rabbito.shuttlelocationproject.R
 //Setting
 class DeleteDialog(context:Context) {
@@ -13,8 +14,8 @@ class DeleteDialog(context:Context) {
     fun showDialog(){
         dialog.setContentView(R.layout.delete_dialog)
         val editText = dialog.findViewById<EditText>(R.id.deletedialog_et_password)
-        val okBtn = dialog.findViewById<Button>(R.id.deletedialog_btn_delete)
-        val cancelBtn = dialog.findViewById<Button>(R.id.deletedialog_btn_cancel)
+        val okBtn = dialog.findViewById<TextView>(R.id.deletedialog_btn_delete)
+        val cancelBtn = dialog.findViewById<TextView>(R.id.deletedialog_btn_cancel)
 
 
         // dialog 크기 조절
