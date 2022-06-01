@@ -3,10 +3,11 @@ package kr.rabbito.shuttlelocationproject.function
 import android.graphics.Color
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.PolylineOptions
+import com.google.android.gms.maps.model.*
+import kr.rabbito.shuttlelocationproject.data.tuk_route_down
+import kr.rabbito.shuttlelocationproject.data.tuk_route_up
 
-fun showRoute(googleMap: GoogleMap, route: Array<LatLng>){
+fun showRoute(googleMap: GoogleMap, route_up: Array<LatLng>, route_down: Array<LatLng>){
     lateinit var polylineOptions: PolylineOptions
     lateinit var mMap: GoogleMap
     mMap = googleMap
@@ -22,13 +23,20 @@ fun showRoute(googleMap: GoogleMap, route: Array<LatLng>){
     , LatLng(37.628849, 126.822987), LatLng(37.627379, 126.828018))
      * */
 
-
     // 배열에 있는 값들로 경로 추가
-    for(i in 0..route.count()-1){
+    for(i in 0..route_up.count()-1){
         polylineOptions = PolylineOptions()
-        polylineOptions.color(Color.RED)
-        polylineOptions.width(5F)
-        arrayPoints.add(route[i])
+        polylineOptions.color(Color.rgb(255, 120, 1))
+        polylineOptions.width(7F)
+        arrayPoints.add(route_up[i])
+        polylineOptions.addAll(arrayPoints)
+        mMap.addPolyline(polylineOptions)
+    }
+    for(i in 0..route_down.count()-1){
+        polylineOptions = PolylineOptions()
+        polylineOptions.color(Color.rgb(255, 120, 1))
+        polylineOptions.width(7F)
+        arrayPoints.add(route_down[i])
         polylineOptions.addAll(arrayPoints)
         mMap.addPolyline(polylineOptions)
     }
