@@ -7,9 +7,7 @@ import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
-import kr.rabbito.shuttlelocationproject.data.Location
-import kr.rabbito.shuttlelocationproject.data.Post
-import kr.rabbito.shuttlelocationproject.data.tuk_route
+import kr.rabbito.shuttlelocationproject.data.*
 
 fun setChildEventListener(postList: MutableList<Location>, map: GoogleMap, path: String) {
     FirebaseDatabase.getInstance().getReference(path)
@@ -86,7 +84,7 @@ fun setChildEventListener(postList: MutableList<Location>, map: GoogleMap, path:
 
 fun showMarkersOnMap(list: MutableList<Location>, map: GoogleMap) {
     map.clear()
-    showRoute(map, tuk_route)
+    showRoute(map, tuk_route_up, tuk_route_down)
     for (i in list.indices) {
         showMarker(map, list[i].driverName, list[i].latitude, list[i].longitude)
     }
