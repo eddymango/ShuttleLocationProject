@@ -76,6 +76,11 @@ class SettingActivity : AppCompatActivity() {
             })
         }
 
+        binding.settingClSettingInfo.setOnClickListener {
+            Toast.makeText(this, "test", Toast.LENGTH_SHORT).show()
+        }
+
+
         binding.settingBtnBack.setOnClickListener {
             finish()
         }

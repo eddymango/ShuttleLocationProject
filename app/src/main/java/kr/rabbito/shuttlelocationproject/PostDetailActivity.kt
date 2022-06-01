@@ -66,11 +66,6 @@ class PostDetailActivity : AppCompatActivity() {
         binding.postdetailBtnCommentdelete.visibility = View.INVISIBLE
         //날짜 받아와서 변환하기
 
-
-
-
-
-
         //comment 없을 경우 NullPointerException 예외 처리?
 
         //TODO(

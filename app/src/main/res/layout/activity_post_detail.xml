@@ -104,8 +104,8 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/postdetail_cl_comment"
-                android:layout_width="316dp"
-                android:layout_height="180dp"
+                android:layout_width="334dp"
+                android:layout_height="198dp"
                 app:layout_constraintStart_toStartOf="parent"
                 android:background="@drawable/detail_iv_rect_small"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -115,9 +115,19 @@
                     android:id="@+id/postdetail_tv_commentdetail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text=""
-                    app:layout_constraintEnd_toEndOf="parent"
+                    android:fontFamily="@font/pretendard_regular"
+                    android:includeFontPadding="false"
+                    android:paddingTop="2dp"
+                    android:paddingStart="2dp"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="16sp"
+                    app:layout_constraintHorizontal_bias="0"
+                    android:gravity="start"
+                    android:layout_marginEnd="35dp"
+                    android:layout_marginTop="27dp"
+                    android:layout_marginStart="35dp"
                     app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"/>
 
                 <Button

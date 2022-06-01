@@ -74,11 +74,10 @@
                     android:layout_width="28dp"
                     android:layout_height="14dp"
                     android:layout_marginStart="40dp"
-                    android:src="@drawable/setting_icon_key"
+                    android:src="@drawable/d_icon_key"
                     app:layout_constraintBottom_toBottomOf="@id/setting_iv_content_admin"
                     app:layout_constraintStart_toStartOf="@id/setting_iv_content_admin"
                     app:layout_constraintTop_toTopOf="@id/setting_iv_content_admin" />
-
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -88,7 +87,7 @@
                     android:fontFamily="@font/pretendard_semibold"
                     android:includeFontPadding="false"
                     android:text="관리자 로그인"
-                    android:textColor="@color/colorBlack"
+                    android:textColor="@drawable/tv_d_buttontext_black"
                     android:textSize="16sp"
                     app:layout_constraintStart_toStartOf="@id/setting_iv_content_admin"
                     app:layout_constraintTop_toTopOf="@id/setting_iv_content_admin" />
@@ -101,7 +100,7 @@
                     android:fontFamily="@font/pretendard_regular"
                     android:includeFontPadding="false"
                     android:text="게시물 답변 작성 권한을 획득합니다."
-                    android:textColor="@color/colorDarkGray"
+                    android:textColor="@drawable/tv_d_buttontext_darkgray"
                     android:textSize="13sp"
                     app:layout_constraintBottom_toBottomOf="@id/setting_iv_content_admin"
                     app:layout_constraintStart_toStartOf="@id/setting_iv_content_admin" />
@@ -130,7 +129,7 @@
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_marginStart="45dp"
-                    android:src="@drawable/setting_icon_info"
+                    android:src="@drawable/d_icon_info"
                     app:layout_constraintBottom_toBottomOf="@id/setting_iv_content_info"
                     app:layout_constraintStart_toStartOf="@id/setting_iv_content_info"
                     app:layout_constraintTop_toTopOf="@id/setting_iv_content_info" />
@@ -144,7 +143,7 @@
                     android:fontFamily="@font/pretendard_semibold"
                     android:includeFontPadding="false"
                     android:text="앱 정보 확인"
-                    android:textColor="@color/colorBlack"
+                    android:textColor="@drawable/tv_d_buttontext_black"
                     android:textSize="16sp"
                     app:layout_constraintStart_toStartOf="@id/setting_iv_content_info"
                     app:layout_constraintTop_toTopOf="@id/setting_iv_content_info" />
@@ -157,7 +156,7 @@
                     android:fontFamily="@font/pretendard_regular"
                     android:includeFontPadding="false"
                     android:text="앱 정책 및 버전 정보를 확인합니다."
-                    android:textColor="@color/colorDarkGray"
+                    android:textColor="@drawable/tv_d_buttontext_darkgray"
                     android:textSize="13sp"
                     app:layout_constraintBottom_toBottomOf="@id/setting_iv_content_info"
                     app:layout_constraintStart_toStartOf="@id/setting_iv_content_info" />
