@@ -26,7 +26,7 @@ fun showRoute(googleMap: GoogleMap, route_up: Array<LatLng>, route_down: Array<L
     // 배열에 있는 값들로 경로 추가
     for(i in 0..route_up.count()-1){
         polylineOptions = PolylineOptions()
-        polylineOptions.color(Color.rgb(255, 120, 1))
+        polylineOptions.color(Color.parseColor("#E87326"))
         polylineOptions.width(7F)
         arrayPoints.add(route_up[i])
         polylineOptions.addAll(arrayPoints)
@@ -34,7 +34,7 @@ fun showRoute(googleMap: GoogleMap, route_up: Array<LatLng>, route_down: Array<L
     }
     for(i in 0..route_down.count()-1){
         polylineOptions = PolylineOptions()
-        polylineOptions.color(Color.rgb(255, 120, 1))
+        polylineOptions.color(Color.parseColor("#E87326"))
         polylineOptions.width(7F)
         arrayPoints.add(route_down[i])
         polylineOptions.addAll(arrayPoints)

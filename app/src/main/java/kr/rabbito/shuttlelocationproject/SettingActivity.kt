@@ -34,7 +34,7 @@ class SettingActivity : AppCompatActivity() {
         val editor = shared.edit()
 
         //관리자 로그인 버튼 클릭
-        binding.settingBtnLogin.setOnClickListener {
+        binding.settingClSettingAdmin.setOnClickListener {
             val dialog = ManagerDialog(this)
             dialog.showDialog()
             dialog.setOnClickListner(object:ManagerDialog.ButtonClickListener{
