@@ -44,6 +44,8 @@ class PostDetailActivity : AppCompatActivity() {
         if (loginMode != "Manager") {
             binding.postdetailEtComment.visibility = View.INVISIBLE
             binding.postdetailBtnComment.visibility = View.INVISIBLE
+            binding.postdetailBtnCommentdelete.visibility = View.INVISIBLE
+
         }
 
         //intent에 담긴 bundle -> post에 풀기
@@ -62,8 +64,10 @@ class PostDetailActivity : AppCompatActivity() {
         // post_detail.xml
         binding.postdetailTvTitle.text = post.postTitle
         binding.postdetailTvContent.text = post.postContent
-        binding.postdetailTvDate.text = post.postDate
-        binding.postdetailBtnCommentdelete.visibility = View.INVISIBLE
+        val long_now = Date(post.postDate.toLong())
+        val dateFormat = SimpleDateFormat("yyyy년 M월 d일",Locale("ko","KR"))
+        val str_date = dateFormat.format(long_now)
+        binding.postdetailTvDate.text = str_date.toString()
         //날짜 받아와서 변환하기
 
 
