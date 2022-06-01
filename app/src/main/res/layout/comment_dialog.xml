@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="22dp"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/commentdialog_et_comment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:layout_marginTop="32dp"
+        android:layout_marginHorizontal="22dp"
+        android:fontFamily="@font/pretendard_medium"
+        android:includeFontPadding="false"
+        android:textColor="@color/colorBlack"
+        android:textSize="15sp"
+        android:hint="답변을 입력하세요."
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/commentdialog_btn_ok"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingEnd="11dp"
+        android:fontFamily="@font/pretendard_semibold"
+        android:includeFontPadding="false"
+        android:paddingStart="13dp"
+        android:paddingTop="13dp"
+        android:paddingBottom="11dp"
+        android:text="확인"
+        android:textColor="@drawable/tv_d_buttontext_primary"
+        android:textSize="13sp"
+        app:layout_constraintEnd_toStartOf="@id/commentdialog_btn_cancle"
+        app:layout_constraintTop_toTopOf="@id/commentdialog_btn_cancle" />
+
+    <TextView
+        android:id="@+id/commentdialog_btn_cancle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="22dp"
+        android:layout_marginEnd="11dp"
+        android:fontFamily="@font/pretendard_medium"
+        android:includeFontPadding="false"
+        android:paddingStart="13dp"
+        android:paddingEnd="11dp"
+        android:paddingTop="13dp"
+        android:paddingBottom="11dp"
+        android:text="취소"
+        android:textColor="@drawable/tv_d_buttontext_black"
+        android:textSize="13sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/commentdialog_et_comment" />
+</androidx.constraintlayout.widget.ConstraintLayout>
