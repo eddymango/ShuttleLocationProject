@@ -18,6 +18,8 @@ import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import kr.rabbito.shuttlelocationproject.data.Location
 import kr.rabbito.shuttlelocationproject.data.tuk_route
+import kr.rabbito.shuttlelocationproject.data.tuk_route_down
+import kr.rabbito.shuttlelocationproject.data.tuk_route_up
 import kr.rabbito.shuttlelocationproject.databinding.ActivityMainBinding
 import kr.rabbito.shuttlelocationproject.function.hashSHA256
 import kr.rabbito.shuttlelocationproject.function.setChildEventListener
@@ -49,6 +51,7 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
             val mapFragment = supportFragmentManager
                 .findFragmentById(R.id.map) as SupportMapFragment
             mapFragment.getMapAsync(this)
+
 //비밀번호 firebase에 올리기
 //            Firebase.database.getReference("Manager").child("1").setValue("TEST1234".hashSHA256())
 //            Firebase.database.getReference("Manager").child("2").setValue("S1L2P3".hashSHA256())
@@ -113,7 +116,7 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
             //map.moveCamera(CameraUpdateFactory.newLatLng(yeouido))
 
 
-
+            showRoute(map, tuk_route_up, tuk_route_down)
             setChildEventListener(postList, map, "Driver/tuk")
         }
 
