@@ -17,11 +17,14 @@ import kr.rabbito.shuttlelocationproject.data.DeleteDialog
 import kr.rabbito.shuttlelocationproject.data.Post
 import kr.rabbito.shuttlelocationproject.databinding.ActivityPostDetailBinding
 import kr.rabbito.shuttlelocationproject.function.hashSHA256
+import java.text.SimpleDateFormat
+import java.util.*
 
 class PostDetailActivity : AppCompatActivity() {
     private var mBinding: ActivityPostDetailBinding? = null
     private val binding get() = mBinding!!
     val TAG: String = "TAG"
+    //private var time = SimpleDateFormat("yyyy년 MM월 dd일").format(Date())
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,6 +34,7 @@ class PostDetailActivity : AppCompatActivity() {
         setContentView(binding.root)
         overridePendingTransition(0, 0)
         Log.d(TAG, "PostDetailActivity called()")
+
 
         val shared = getSharedPreferences("Mode", Context.MODE_PRIVATE)
         //저장되어 있는 UserMode 값 getString / default Value : User
@@ -59,6 +63,12 @@ class PostDetailActivity : AppCompatActivity() {
         binding.postdetailTvTitle.text = post.postTitle
         binding.postdetailTvContent.text = post.postContent
         binding.postdetailTvDate.text = post.postDate
+        binding.postdetailBtnCommentdelete.visibility = View.INVISIBLE
+        //날짜 받아와서 변환하기
+
+
+
+
 
 
         //comment 없을 경우 NullPointerException 예외 처리?
@@ -69,13 +79,17 @@ class PostDetailActivity : AppCompatActivity() {
                 if (task.isSuccessful) {
                     val comment = task.result.getValue(Comment::class.java)
                     if (comment?.comment != null) {
-                        binding.postdetailTvCommentdetail.text = "답변 내용 : " + comment.comment
+                        binding.postdetailTvCommentdetail.text = "답변 내용 : ${comment.comment}"
+                        binding.postdetailBtnCommentdelete.visibility = View.VISIBLE
                     } else {
                         binding.postdetailTvCommentdetail.visibility = View.INVISIBLE
+                        binding.postdetailBtnCommentdelete.visibility = View.INVISIBLE
 
                     }
                 } else {
                     binding.postdetailTvCommentdetail.visibility = View.INVISIBLE
+                    binding.postdetailBtnCommentdelete.visibility = View.INVISIBLE
+
                 }
             }
 
@@ -138,6 +152,14 @@ class PostDetailActivity : AppCompatActivity() {
             commentRef.child(commentKey).setValue(comment)
             Toast.makeText(this, "Comment 등록 완료", Toast.LENGTH_SHORT).show()
             finish()
+        }
+        binding.postdetailBtnCommentdelete.setOnClickListener {
+            if (binding.postdetailTvCommentdetail.text.toString() != ""){
+                commentRef.child(post.postCommentId).removeValue()
+                Toast.makeText(this, "Comment 삭제 완료", Toast.LENGTH_SHORT).show()
+                finish()
+
+            }
         }
 
         binding.postdetailBtnBack.setOnClickListener {

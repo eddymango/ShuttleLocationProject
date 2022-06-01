@@ -120,39 +120,51 @@
                 app:layout_constraintEnd_toEndOf="@id/postdetail_iv_content"
                 app:layout_constraintTop_toBottomOf="@id/postdetail_tv_title" />
 
+
             <TextView
                 android:id="@+id/postdetail_tv_commentdetail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="답변 내용 : "
-                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/postdetail_iv_content" />
-
 
             <Button
                 android:id="@+id/postdetail_btn_comment"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_width="95dp"
+                android:layout_height="39dp"
+                android:textSize="10dp"
                 android:text="댓글 등록하기 "
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/postdetail_iv_content" />
+                app:layout_constraintStart_toStartOf="parent" />
 
             <EditText
                 android:id="@+id/postdetail_et_comment"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="36dp"
+                android:layout_height="32dp"
                 android:hint="댓글을 입력하세요 "
                 android:inputType="textPersonName"
-                app:layout_constraintBottom_toTopOf="@id/postdetail_btn_comment"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                android:textSize="10dp"
+                app:layout_constraintBottom_toTopOf="@+id/postdetail_btn_comment"
+                app:layout_constraintEnd_toStartOf="@+id/postdetail_btn_commentdelete"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/postdetail_tv_commentdetail" />
+
+            <Button
+                android:id="@+id/postdetail_btn_commentdelete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="4dp"
+                android:layout_marginBottom="4dp"
+                android:text="댓글삭제"
+                android:textSize="10dp"
+                app:layout_constraintBottom_toTopOf="@+id/postdetail_btn_comment"
+                app:layout_constraintEnd_toEndOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

@@ -54,7 +54,7 @@ class PostAdapter(val context: Context,
             Log.d(TAG,"OnBindViewHolder called()")
 
             context.startActivity(intent)
-            (context as Activity).finish()
+            //(context as Activity).finish()
         }
 
         //RecyclerView LongClickListener 구현 -> 삭제
