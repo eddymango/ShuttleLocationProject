@@ -115,6 +115,10 @@ class CommunityActivity : AppCompatActivity() {
                     error.toException().printStackTrace()
                 }
             })
+
+        binding.communityBtnBack.setOnClickListener {
+            finish()
+        }
     }
 
     override fun finish() {

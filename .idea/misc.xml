@@ -15,6 +15,7 @@
         <entry key="..\:/Users/chiho/AndroidStudioProjects/ShuttleLocationProject/app/src/main/res/drawable-xxxhdpi/tv_d_buttontext_primary.xml" value="0.3038095238095238" />
         <entry key="..\:/Users/chiho/AndroidStudioProjects/ShuttleLocationProject/app/src/main/res/drawable-xxxhdpi/tv_d_buttontext_red.xml" value="0.403" />
         <entry key="..\:/Users/chiho/AndroidStudioProjects/ShuttleLocationProject/app/src/main/res/drawable-xxxhdpi/tv_d_buttontext_ㄱㄷㅇ.xml" value="0.4455" />
+        <entry key="..\:/Users/chiho/AndroidStudioProjects/ShuttleLocationProject/app/src/main/res/drawable/d_community_btn_item.xml" value="0.3785" />
         <entry key="..\:/Users/chiho/AndroidStudioProjects/ShuttleLocationProject/app/src/main/res/drawable/d_detail_btn_schedule.xml" value="0.319" />
         <entry key="..\:/Users/chiho/AndroidStudioProjects/ShuttleLocationProject/app/src/main/res/drawable/d_icon_info.xml" value="0.44" />
         <entry key="..\:/Users/chiho/AndroidStudioProjects/ShuttleLocationProject/app/src/main/res/drawable/d_icon_key.xml" value="0.44" />
@@ -32,6 +33,7 @@
         <entry key="..\:/Users/chiho/AndroidStudioProjects/ShuttleLocationProject/app/src/main/res/layout/activity_post_detail.xml" value="0.3976851851851852" />
         <entry key="..\:/Users/chiho/AndroidStudioProjects/ShuttleLocationProject/app/src/main/res/layout/activity_setting.xml" value="0.3976851851851852" />
         <entry key="..\:/Users/chiho/AndroidStudioProjects/ShuttleLocationProject/app/src/main/res/layout/alram_dialog.xml" value="0.45925925925925926" />
+        <entry key="..\:/Users/chiho/AndroidStudioProjects/ShuttleLocationProject/app/src/main/res/layout/check_dialog.xml" value="0.45925925925925926" />
         <entry key="..\:/Users/chiho/AndroidStudioProjects/ShuttleLocationProject/app/src/main/res/layout/comment_dialog.xml" value="0.45925925925925926" />
         <entry key="..\:/Users/chiho/AndroidStudioProjects/ShuttleLocationProject/app/src/main/res/layout/delete_dialog.xml" value="0.3923878568192116" />
         <entry key="..\:/Users/chiho/AndroidStudioProjects/ShuttleLocationProject/app/src/main/res/layout/info_dialog.xml" value="0.37199818758495695" />

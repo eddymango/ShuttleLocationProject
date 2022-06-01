@@ -4,7 +4,7 @@
     android:layout_width="348dp"
     android:layout_height="104dp"
     android:layout_gravity="center_horizontal"
-    android:background="@drawable/community_iv_rect">
+    android:background="@drawable/d_community_btn_item">
 
     <TextView
         android:id="@+id/postcard_tv_title"
@@ -15,7 +15,7 @@
         android:fontFamily="@font/pretendard_semibold"
         android:includeFontPadding="false"
         android:text=""
-        android:textColor="@color/colorBlack"
+        android:textColor="@drawable/tv_d_buttontext_black"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -29,7 +29,7 @@
         android:fontFamily="@font/pretendard_regular"
         android:includeFontPadding="false"
         android:text=""
-        android:textColor="@color/colorDarkGray"
+        android:textColor="@drawable/tv_d_buttontext_darkgray"
         android:textSize="13sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>

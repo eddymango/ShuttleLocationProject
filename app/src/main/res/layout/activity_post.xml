@@ -156,6 +156,8 @@
                 android:adjustViewBounds="true"
                 android:fontFamily="@font/pretendard_semibold"
                 android:includeFontPadding="false"
+                android:paddingTop="1dp"
+                android:paddingStart="1dp"
                 android:text="게시글 등록"
                 android:textColor="@drawable/tv_d_buttontext"
                 android:textSize="15sp"

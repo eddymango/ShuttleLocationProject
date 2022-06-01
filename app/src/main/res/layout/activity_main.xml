@@ -25,10 +25,10 @@
 
     <Button
         android:id="@+id/main_icon_sb_Menu"
-        android:layout_width="18dp"
-        android:layout_height="12dp"
-        android:layout_marginStart="29dp"
-        android:layout_marginTop="20dp"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/main_icon_sb_menu"
         app:layout_constraintLeft_toLeftOf="@+id/main_Spinner"
         app:layout_constraintTop_toTopOf="@id/main_Spinner" />
@@ -37,7 +37,7 @@
         android:id="@+id/main_text_Route"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="9dp"
         android:layout_marginTop="17dp"
         android:fontFamily="@font/pretendard_medium"
         android:includeFontPadding="false"
