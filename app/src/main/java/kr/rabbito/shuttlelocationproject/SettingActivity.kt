@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ktx.database
 import com.google.firebase.database.ktx.getValue
@@ -77,7 +79,13 @@ class SettingActivity : AppCompatActivity() {
         }
 
         binding.settingClSettingInfo.setOnClickListener {
-            Toast.makeText(this, "test", Toast.LENGTH_SHORT).show()
+            val dialogView = View.inflate(this, R.layout.info_dialog, null)
+            val info = AlertDialog.Builder(this)
+            val dlg = info.create()
+            val info_btn = dialogView.findViewById<TextView>(R.id.infodialog_btn_cancel)
+            info_btn.setOnClickListener { dlg.dismiss() }
+            dlg.setView(dialogView)
+            dlg.show()
         }
 
 

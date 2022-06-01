@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import kr.rabbito.shuttlelocationproject.databinding.ActivityCommunityBinding
 import kr.rabbito.shuttlelocationproject.databinding.ActivityDetailBinding
@@ -20,20 +21,18 @@ class DetailActivity : AppCompatActivity() {
         overridePendingTransition(0, 0)
 
         binding.detailBtnSchedule.setOnClickListener{
-            var dialogView = View.inflate(this, R.layout.schedule_dialog, null)
-            var schedule = AlertDialog.Builder(this)
-            schedule.setTitle("셔틀 노선도")
-            schedule.setView(dialogView)
-            Log.d("loc", "loc")
-            schedule.setPositiveButton("확인", null)
-            schedule.show()
+            val dialogView = View.inflate(this, R.layout.schedule_dialog, null)
+            val schedule = AlertDialog.Builder(this)
+            val dlg = schedule.create()
+            val schedule_btn = dialogView.findViewById<TextView>(R.id.scheduledialog_btn_cancel)
+            schedule_btn.setOnClickListener { dlg.dismiss() }
+            dlg.setView(dialogView)
+            dlg.show()
         }
 
         binding.detailBtnBack.setOnClickListener {
             finish()
         }
-
-
     }
 
     override fun finish() {

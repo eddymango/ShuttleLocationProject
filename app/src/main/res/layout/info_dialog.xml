@@ -8,33 +8,37 @@
     android:paddingHorizontal="22dp">
 
     <TextView
-        android:id="@+id/scheduledialog_tv_title"
+        android:id="@+id/infodialog_tv_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:fontFamily="@font/pretendard_semibold"
         android:includeFontPadding="false"
-        android:text="배차 시간표"
+        android:text="앱 정보"
         android:textColor="@color/colorPrimary"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/scheduledialog_iv_schedule"
+    <TextView
+        android:id="@+id/infodialog_tv_content"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="22dp"
         android:layout_marginBottom="22dp"
-        android:adjustViewBounds="true"
-        android:src="@drawable/bus_schedule"
+        android:fontFamily="@font/pretendard_regular"
+        android:textColor="@color/colorBlack"
+        android:includeFontPadding="false"
+        app:layout_constraintHorizontal_bias="0"
+        android:text="@string/app_info"
+        android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/scheduledialog_tv_title" />
+        app:layout_constraintTop_toBottomOf="@id/infodialog_tv_title" />
 
     <TextView
-        android:id="@+id/scheduledialog_btn_cancel"
+        android:id="@+id/infodialog_btn_cancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="22dp"
@@ -50,5 +54,5 @@
         android:textSize="13sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/scheduledialog_iv_schedule" />
+        app:layout_constraintTop_toBottomOf="@id/infodialog_tv_content" />
 </androidx.constraintlayout.widget.ConstraintLayout>
