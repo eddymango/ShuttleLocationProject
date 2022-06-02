@@ -19,6 +19,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+
+
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/postdetail_cl_top"
                 android:layout_width="match_parent"
@@ -107,6 +109,7 @@
                 android:layout_width="334dp"
                 android:layout_height="198dp"
                 android:background="@drawable/detail_iv_rect_small"
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/postdetail_iv_content">
@@ -130,29 +133,6 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <Button
-                    android:id="@+id/postdetail_btn_comment"
-                    android:layout_width="95dp"
-                    android:layout_height="39dp"
-                    android:text="댓글 등록하기 "
-                    android:textSize="10dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.498"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
-
-                <Button
-                    android:id="@+id/postdetail_btn_commentdelete"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="4dp"
-                    android:layout_marginBottom="4dp"
-                    android:text="댓글삭제"
-                    android:textSize="10dp"
-                    app:layout_constraintBottom_toTopOf="@+id/postdetail_btn_comment"
-                    app:layout_constraintEnd_toEndOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <Button
@@ -186,6 +166,40 @@
                 android:textSize="13sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@id/postdetail_btn_delete" />
+            <Button
+                android:id="@+id/postdetail_btn_commentdelete"
+                android:layout_width="136dp"
+                android:layout_height="74dp"
+                android:layout_marginEnd="22dp"
+                android:background="@drawable/d_postdetail_btn"
+                android:fontFamily="@font/pretendard_semibold"
+                android:includeFontPadding="false"
+                android:paddingStart="3dp"
+                android:paddingTop="3dp"
+                android:text="댓글 삭제"
+                android:textColor="@drawable/tv_d_buttontext_red"
+                android:textSize="13sp"
+                android:visibility="invisible"
+                app:layout_constraintEnd_toStartOf="@id/postdetail_btn_edit"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/postdetail_btn_edit" />
+
+            <Button
+                android:id="@+id/postdetail_btn_comment"
+                android:layout_width="136dp"
+                android:layout_height="74dp"
+                android:layout_marginEnd="22dp"
+                android:background="@drawable/d_postdetail_btn"
+                android:fontFamily="@font/pretendard_semibold"
+                android:includeFontPadding="false"
+                android:paddingStart="3dp"
+                android:paddingTop="3dp"
+                android:text="댓글 등록"
+                android:textColor="@drawable/tv_d_buttontext_primary"
+                android:textSize="13sp"
+                android:visibility="invisible"
+                app:layout_constraintEnd_toStartOf="@id/postdetail_btn_edit"
+                app:layout_constraintTop_toTopOf="@id/postdetail_btn_edit" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
