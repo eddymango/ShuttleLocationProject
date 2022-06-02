@@ -21,6 +21,15 @@ import kr.rabbito.shuttlelocationproject.function.hashSHA256
 import java.text.SimpleDateFormat
 import java.util.*
 
+//< PostDetailActivity - xml >
+//댓글 x
+//-> 아예 안뜨게
+//-> 관리자한테는 등록 버튼
+//댓글 o
+//-> 둘 다 박스 뜨고
+//-> 관리자한테는 삭제 버튼
+//<순서> 댓글등록또는삭제 변경 삭제
+
 class PostDetailActivity : AppCompatActivity() {
     private var mBinding: ActivityPostDetailBinding? = null
     private val binding get() = mBinding!!
@@ -32,25 +41,51 @@ class PostDetailActivity : AppCompatActivity() {
 
         mBinding = ActivityPostDetailBinding.inflate(layoutInflater)
 
-        setContentView(binding.root)
-        overridePendingTransition(0, 0)
-        Log.d(TAG, "PostDetailActivity called()")
-
-
         val shared = getSharedPreferences("Mode", Context.MODE_PRIVATE)
         //저장되어 있는 UserMode 값 getString / default Value : User
         val loginMode = shared.getString("UserMode", "User")
 
-        //UserMode : User 일 경우 comment 관련 INVISIBLE
-        if (loginMode != "Manager") {
+        //UserMode : Manager
+        if (loginMode == "Manager") {
+            binding.postdetailBtnComment.visibility = View.VISIBLE
+
+        }
+        //UserMode : Manager
+        else{
             binding.postdetailBtnComment.visibility = View.INVISIBLE
-            binding.postdetailBtnCommentdelete.visibility = View.INVISIBLE
 
         }
 
-        //intent에 담긴 bundle -> post에 풀기
         val bundle = intent.extras
         val post = bundle!!.getParcelable<Post>("selectedPost")!!
+
+        Firebase.database.getReference("Community/Comment").child(post.postCommentId).get()
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    val comment = task.result.getValue(Comment::class.java)
+                    if (comment?.comment !=null && comment.comment !="" ) {
+                        binding.postdetailTvCommentdetail.text = "답변 내용 : ${comment!!.comment}"
+                        binding.postdetailClComment.visibility = View.VISIBLE
+
+                        if (loginMode == "Manager"){
+                            binding.postdetailBtnComment.visibility = View.INVISIBLE
+                            binding.postdetailBtnCommentdelete.visibility = View.VISIBLE
+
+                        }
+                        else{
+                            binding.postdetailBtnComment.visibility = View.INVISIBLE
+                            binding.postdetailBtnCommentdelete.visibility = View.INVISIBLE
+
+                        }
+                    }
+                }
+            }
+
+        setContentView(binding.root)
+        overridePendingTransition(0, 0)
+        Log.d(TAG, "PostDetailActivity called()")
+
+        //intent에 담긴 bundle -> post에 풀기
 
         val comment = Comment()
 
@@ -59,7 +94,6 @@ class PostDetailActivity : AppCompatActivity() {
         val postRef = FirebaseDatabase.getInstance().getReference("Community/Post")
         //key == commentId
         val commentKey = commentRef.push().key!!
-
 
         // post_detail.xml
         binding.postdetailTvTitle.text = post.postTitle
@@ -71,26 +105,6 @@ class PostDetailActivity : AppCompatActivity() {
         //날짜 받아와서 변환하기
 
         //comment 없을 경우 NullPointerException 예외 처리?
-
-        //TODO(
-        Firebase.database.getReference("Community/Comment").child(post.postCommentId).get()
-            .addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    val comment = task.result.getValue(Comment::class.java)
-                    if (comment?.comment != null) {
-                        binding.postdetailTvCommentdetail.text = "답변 내용 : ${comment.comment}"
-                        binding.postdetailBtnCommentdelete.visibility = View.VISIBLE
-                    } else {
-                        binding.postdetailTvCommentdetail.visibility = View.INVISIBLE
-                        binding.postdetailBtnCommentdelete.visibility = View.INVISIBLE
-
-                    }
-                } else {
-                    binding.postdetailTvCommentdetail.visibility = View.INVISIBLE
-                    binding.postdetailBtnCommentdelete.visibility = View.INVISIBLE
-
-                }
-            }
 
         // 게시물 수정하기 삭제하기 ->
         binding.postdetailBtnDelete.setOnClickListener {
@@ -178,6 +192,9 @@ class PostDetailActivity : AppCompatActivity() {
 
     override fun finish() {
         super.finish()
+        binding.postdetailClComment.visibility = View.INVISIBLE
+        binding.postdetailClComment.visibility = View.INVISIBLE
+
         overridePendingTransition(0, 0)
     }
 }

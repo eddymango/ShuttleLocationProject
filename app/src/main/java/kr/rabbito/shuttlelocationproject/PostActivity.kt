@@ -34,8 +34,11 @@ class PostActivity : AppCompatActivity() {
             with(binding){
                 postEtTitle.setText(tmpPost?.postTitle)
                 postEtContent.setText(tmpPost?.postContent)
+                //temp.postPassword = 암호화 알고리즘 적용된 비밀번호
+                postEtPassword.setText(tmpPost?.postPassword)
             }
         }
+
         //post -> userInput Value 담을 객체
         val post = Post()
         val ref = FirebaseDatabase.getInstance().getReference("Community/Post")
@@ -80,27 +83,20 @@ class PostActivity : AppCompatActivity() {
         }
 
         binding.postBtnEdit.setOnClickListener {
-            val tmpPostPassword = intent.getStringExtra("PostPassword")
             val tmpPostId = intent.getStringExtra("PostId")
 
             post.postTitle = binding.postEtTitle.text.toString()
             post.postContent = binding.postEtContent.text.toString()
             //password -> 암호화하여 등록
+            //사용자가 postActivity에서 비밀번호 새로 입력할 경우 다시 등록하도록 함
             post.postPassword = binding.postEtPassword.text.toString().hashSHA256()
             post.postDate = System.currentTimeMillis().toString()
             post.postId = tmpPostId!!
 
-            if (post.postPassword == tmpPostPassword){
-                ref.child(post.postId).setValue(post)
-                val intent = Intent(this,CommunityActivity::class.java)
-                startActivity(intent)
-                finish()
-            }
-            else{
-                //비밀번호 입력 제한 해야하나?
-                Toast.makeText(this,"비밀번호가 일치하지 않습니다.",Toast.LENGTH_SHORT).show()
-
-            }
+            ref.child(post.postId).setValue(post)
+            val intent = Intent(this,CommunityActivity::class.java)
+            startActivity(intent)
+            finish()
         }
     }
 
