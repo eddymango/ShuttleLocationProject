@@ -129,6 +129,9 @@ class PostDetailActivity : AppCompatActivity() {
             })
 
         }
+
+
+
         binding.postdetailBtnEdit.setOnClickListener {
             //deleteDialog 재 사용 -> editText.setText() 사용
             val dialog = DeleteDialog(this@PostDetailActivity)
@@ -144,10 +147,11 @@ class PostDetailActivity : AppCompatActivity() {
                         intent.putExtra("post", post)
                         intent.putExtra("PostMode", "Edit")
                         intent.putExtra("PostId", post.postId)
-                        intent.putExtra("PostPassword", post.postPassword)
-                        startActivity(intent)
+                        intent.putExtra("PostPassword", text)
                         //post 삭제
                         finish()
+                        startActivity(intent)
+
                     } else { // 게시물 비밀번호 다를 경우
                         Toast.makeText(this@PostDetailActivity, "잘못된 비밀번호입니다.", Toast.LENGTH_SHORT).show()
                     }
@@ -172,9 +176,20 @@ class PostDetailActivity : AppCompatActivity() {
                         comment.comment = text
                         comment.commentId = commentKey
                         commentRef.child(commentKey).setValue(comment)
+                        post.postCommentId = comment.commentId
+
+                        val tintent = Intent(this@PostDetailActivity, PostDetailActivity::class.java)
+
+                        val tmpbundle = Bundle()
+                        tmpbundle.putParcelable("selectedPost",post)
+                        tintent.putExtras(tmpbundle)
                         Toast.makeText(this@PostDetailActivity, "답변이 등록되었습니다.", Toast.LENGTH_SHORT)
                             .show()
+
+
                         finish()
+                        startActivity(tintent)
+
                     }
                 }
             })
