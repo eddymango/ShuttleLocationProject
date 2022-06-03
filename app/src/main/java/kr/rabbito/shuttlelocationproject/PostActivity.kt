@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
@@ -17,7 +18,7 @@ import kr.rabbito.shuttlelocationproject.function.hashSHA256
 class PostActivity : AppCompatActivity() {
     private var mBinding: ActivityPostBinding? = null
     private val binding get() = mBinding!!
-
+    private val TAG="TAG"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mBinding = ActivityPostBinding.inflate(layoutInflater)
@@ -37,7 +38,8 @@ class PostActivity : AppCompatActivity() {
                 postEtTitle.setText(tmpPost?.postTitle)
                 postEtContent.setText(tmpPost?.postContent)
                 //temp.postPassword = 암호화 알고리즘 적용된 비밀번호
-                postEtPassword.setText(tmpPost?.postPassword)
+                postEtPassword.setText(intent.getStringExtra("PostPassword"))
+                Log.d(TAG,"postEtPassword : $postEtPassword")
             }
         }
 
@@ -124,8 +126,8 @@ class PostActivity : AppCompatActivity() {
                 post.postId = tmpPostId!!
 
                 ref.child(post.postId).setValue(post)
-                val intent = Intent(this,CommunityActivity::class.java)
-                startActivity(intent)
+                intent.putExtra("EditPost",post)
+                Log.d(TAG,"EditPost password : $post.")
                 finish()
             }
             dlg.setView(dialogView)

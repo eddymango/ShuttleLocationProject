@@ -58,12 +58,12 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
         mapFragment.getMapAsync(this)
 
 //비밀번호 firebase에 올리기
-            Firebase.database.getReference("Manager").child("1").setValue("TEST1234".hashSHA256())
-            Firebase.database.getReference("Manager").child("2").setValue("S1L2P3".hashSHA256())
-            Firebase.database.getReference("Manager").child("3").setValue("1P12L23S3".hashSHA256())
-            Firebase.database.getReference("Manager").child("4").setValue("T1E2ST".hashSHA256())
-            Firebase.database.getReference("Manager").child("5").setValue("TEST".hashSHA256())
-            Firebase.database.getReference("Manager").child("6").setValue("mm0k211".hashSHA256())
+//            Firebase.database.getReference("Manager").child("1").setValue("TEST1234".hashSHA256())
+//            Firebase.database.getReference("Manager").child("2").setValue("S1L2P3".hashSHA256())
+//            Firebase.database.getReference("Manager").child("3").setValue("1P12L23S3".hashSHA256())
+//            Firebase.database.getReference("Manager").child("4").setValue("T1E2ST".hashSHA256())
+//            Firebase.database.getReference("Manager").child("5").setValue("TEST".hashSHA256())
+//            Firebase.database.getReference("Manager").child("6").setValue("mm0k211".hashSHA256())
 
 
         // 오류 무시
