@@ -7,74 +7,73 @@
     android:background="@color/colorWhite"
     tools:context=".PostDetailActivity">
 
-    <ScrollView
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/postdetail_cl_top"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="68dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/postdetail_btn_back"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="11dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/icon_back"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/pretendard_medium"
+            android:includeFontPadding="false"
+            android:text="게시글 상세"
+            android:textColor="@color/colorPrimary"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@id/postdetail_btn_back"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/postdetail_btn_back" />
+
+        <Button
+            android:id="@+id/postdetail_btn_delete"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_marginEnd="22dp"
+            android:background="@drawable/icon_delete"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/postdetail_btn_back"/>
+
+        <Button
+            android:id="@+id/postdetail_btn_edit"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/icon_post"
+            app:layout_constraintEnd_toStartOf="@id/postdetail_btn_delete"
+            app:layout_constraintBottom_toBottomOf="@id/postdetail_btn_back"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="17dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/postdetail_cl_top">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/postdetail_cl_top"
-                android:layout_width="match_parent"
-                android:layout_height="68dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <Button
-                    android:id="@+id/postdetail_btn_back"
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:layout_marginStart="11dp"
-                    android:layout_marginBottom="15dp"
-                    android:background="@drawable/icon_back"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/pretendard_medium"
-                    android:includeFontPadding="false"
-                    android:text="게시글 상세"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="18sp"
-                    app:layout_constraintBottom_toBottomOf="@id/postdetail_btn_back"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/postdetail_btn_back" />
-
-                <Button
-                    android:id="@+id/postdetail_btn_delete"
-                    android:layout_width="22dp"
-                    android:layout_height="22dp"
-                    android:layout_marginEnd="22dp"
-                    android:background="@drawable/icon_delete"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintBottom_toBottomOf="@id/postdetail_btn_back"/>
-
-                <Button
-                    android:id="@+id/postdetail_btn_edit"
-                    android:layout_width="22dp"
-                    android:layout_height="22dp"
-                    android:layout_marginEnd="16dp"
-                    android:background="@drawable/icon_post"
-                    app:layout_constraintEnd_toStartOf="@id/postdetail_btn_delete"
-                    app:layout_constraintBottom_toBottomOf="@id/postdetail_btn_back"/>
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
             <ImageView
                 android:id="@+id/postdetail_iv_content"
                 android:layout_width="334dp"
                 android:layout_height="437dp"
-                android:layout_marginTop="17dp"
                 android:src="@drawable/detail_iv_rect_big"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

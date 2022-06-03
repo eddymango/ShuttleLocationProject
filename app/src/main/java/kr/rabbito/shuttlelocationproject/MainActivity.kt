@@ -1,7 +1,9 @@
 package kr.rabbito.shuttlelocationproject
 
+import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
@@ -13,6 +15,7 @@ import android.widget.Toast
 import android.widget.ZoomControls
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
 import com.google.android.gms.maps.*
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
@@ -33,6 +36,8 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var map: GoogleMap
     private val postList = mutableListOf<Location>()
+
+    private val LOCATION_REQUEST = 100
 
     private val FINISH_INTERVAL_TIME: Long = 2000
     private var backPressedTime: Long = 0
@@ -57,6 +62,16 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
 
+        // 권한 확인
+        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
+            || ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED){
+            var permissions = arrayOf(
+                android.Manifest.permission.ACCESS_FINE_LOCATION,
+                android.Manifest.permission.ACCESS_COARSE_LOCATION
+            )
+            ActivityCompat.requestPermissions(this, permissions, LOCATION_REQUEST)
+        }
+
 //비밀번호 firebase에 올리기
 //            Firebase.database.getReference("Manager").child("1").setValue("TEST1234".hashSHA256())
 //            Firebase.database.getReference("Manager").child("2").setValue("S1L2P3".hashSHA256())
@@ -65,9 +80,8 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
 //            Firebase.database.getReference("Manager").child("5").setValue("TEST".hashSHA256())
 //            Firebase.database.getReference("Manager").child("6").setValue("mm0k211".hashSHA256())
 
-
-        // 오류 무시
-        val zoomControls = mapFragment.view!!.findViewById<View>(0x1)
+        // 확대 축소 버튼 위치 지정
+        val zoomControls = mapFragment.requireView().findViewById<View>(0x1)    // 0x1: 확대 축소 버튼
 
         if (zoomControls != null && zoomControls.layoutParams is RelativeLayout.LayoutParams) {
             // ZoomControl is inside of RelativeLayout
@@ -81,7 +95,26 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
                 resources.displayMetrics
             ).toInt()
 
-            val topMargin = resources.displayMetrics.heightPixels / 2 - 40
+            val topMargin = resources.displayMetrics.heightPixels / 2 - 120 // 상대 위치 기준 마진 설정
+            params_zoom.setMargins(margin, topMargin, margin, margin)
+        }
+
+        // 현위치 버튼 위치 지정
+        val myLocationControls = mapFragment.requireView().findViewById<View>(0x2)  // 0x2: 현위치 버튼
+
+        if (myLocationControls != null && myLocationControls.layoutParams is RelativeLayout.LayoutParams) {
+            // ZoomControl is inside of RelativeLayout
+            val params_zoom = myLocationControls.layoutParams as RelativeLayout.LayoutParams
+
+            params_zoom.addRule(RelativeLayout.ALIGN_PARENT_TOP)
+            params_zoom.addRule(RelativeLayout.CENTER_VERTICAL)
+
+            val margin = TypedValue.applyDimension(
+                TypedValue.COMPLEX_UNIT_DIP, 16f,
+                resources.displayMetrics
+            ).toInt()
+
+            val topMargin = resources.displayMetrics.heightPixels / 2 + 180
             params_zoom.setMargins(margin, topMargin, margin, margin)
         }
 
@@ -111,6 +144,19 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
         // 확대 축소(+-) 버튼
         map.uiSettings.isZoomControlsEnabled = true
 
+        if (ActivityCompat.checkSelfPermission(
+                this,
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+                this,
+                Manifest.permission.ACCESS_COARSE_LOCATION
+            ) == PackageManager.PERMISSION_GRANTED
+        ) {
+            // 현위치 버튼 활성화
+            map.isMyLocationEnabled = true
+            map.uiSettings.isMyLocationButtonEnabled = true
+        }
+
         val start_loc = LatLng(37.345417, 126.738568)
         map.moveCamera(CameraUpdateFactory.newLatLngZoom(start_loc, 14.5f))
         // Add a marker in Sydney and move the camera
@@ -132,6 +178,38 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
         } else {
             backPressedTime = tempTime
             Toast.makeText(applicationContext, "한 번 더 누르면 종료됩니다.", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    // 권한 확인 결과
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+
+        if (requestCode === LOCATION_REQUEST) {
+            if (grantResults.size > 0) {
+                for (grant in grantResults) {
+                    // 권한 획득하지 못한 경우
+                    if (grant != PackageManager.PERMISSION_GRANTED) {
+                        Toast.makeText(this, "현위치 표시를 위해서는 위치 권한이 필요합니다.", Toast.LENGTH_SHORT).show()
+                    } else {    // 권한 획득한 경우
+                        if (ActivityCompat.checkSelfPermission(
+                                this,
+                                Manifest.permission.ACCESS_FINE_LOCATION
+                            ) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+                                this,
+                                Manifest.permission.ACCESS_COARSE_LOCATION
+                            ) == PackageManager.PERMISSION_GRANTED
+                        ) {
+                            map.isMyLocationEnabled = true
+                            map.uiSettings.isMyLocationButtonEnabled = true
+                        }
+                    }
+                }
+            }
         }
     }
 
