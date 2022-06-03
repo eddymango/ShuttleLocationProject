@@ -1,15 +1,15 @@
 package kr.rabbito.shuttlelocationproject
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ServerValue
-import com.google.firebase.ktx.Firebase
 import kr.rabbito.shuttlelocationproject.data.Post
 import kr.rabbito.shuttlelocationproject.databinding.ActivityPostBinding
 import kr.rabbito.shuttlelocationproject.function.hashSHA256
@@ -27,6 +27,8 @@ class PostActivity : AppCompatActivity() {
 
         val mode = intent.getStringExtra("PostMode") ?: "temp"
         if(mode == "Edit"){
+            binding.postTvSubject.text = "게시글 수정"
+
             binding.postBtnPost.visibility = View.INVISIBLE
             binding.postBtnEdit.visibility = View.VISIBLE
             val bundle = intent.extras
@@ -43,7 +45,24 @@ class PostActivity : AppCompatActivity() {
         val post = Post()
         val ref = FirebaseDatabase.getInstance().getReference("Community/Post")
 
-        // Key = PostKey
+        binding.postEtContent.addTextChangedListener(object : TextWatcher {
+            var prev = ""
+
+            override fun afterTextChanged(p0: Editable?) {
+                if (binding.postEtContent.lineCount >= 18) {
+                    binding.postEtContent.setText(prev)
+                    binding.postEtContent.setSelection(binding.postEtContent.length())
+                }
+            }
+
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                prev = p0.toString()
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+            }
+        })
 
         // user input -> Post -> Firebase 등록
         binding.postBtnPost.setOnClickListener {
@@ -83,20 +102,34 @@ class PostActivity : AppCompatActivity() {
         }
 
         binding.postBtnEdit.setOnClickListener {
-            val tmpPostId = intent.getStringExtra("PostId")
+            val dialogView = View.inflate(this, R.layout.check_dialog, null)
+            val check = AlertDialog.Builder(this)
+            val dlg = check.create()
+            val check_ok_btn = dialogView.findViewById<TextView>(R.id.checkdialog_btn_ok)
+            val check_cancel_btn =
+                dialogView.findViewById<TextView>(R.id.checkdialog_btn_cancel)
+            val check_tv = dialogView.findViewById<TextView>(R.id.checkdialog_tv_title)
+            check_tv.text = "게시글을 수정하시겠습니까?"
+            check_cancel_btn.setOnClickListener { dlg.dismiss() }
+            // 확인 버튼
+            check_ok_btn.setOnClickListener {
+                val tmpPostId = intent.getStringExtra("PostId")
 
-            post.postTitle = binding.postEtTitle.text.toString()
-            post.postContent = binding.postEtContent.text.toString()
-            //password -> 암호화하여 등록
-            //사용자가 postActivity에서 비밀번호 새로 입력할 경우 다시 등록하도록 함
-            post.postPassword = binding.postEtPassword.text.toString().hashSHA256()
-            post.postDate = System.currentTimeMillis().toString()
-            post.postId = tmpPostId!!
+                post.postTitle = binding.postEtTitle.text.toString()
+                post.postContent = binding.postEtContent.text.toString()
+                //password -> 암호화하여 등록
+                //사용자가 postActivity에서 비밀번호 새로 입력할 경우 다시 등록하도록 함
+                post.postPassword = binding.postEtPassword.text.toString().hashSHA256()
+                post.postDate = System.currentTimeMillis().toString()
+                post.postId = tmpPostId!!
 
-            ref.child(post.postId).setValue(post)
-            val intent = Intent(this,CommunityActivity::class.java)
-            startActivity(intent)
-            finish()
+                ref.child(post.postId).setValue(post)
+                val intent = Intent(this,CommunityActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
+            dlg.setView(dialogView)
+            dlg.show()
         }
     }
 

@@ -5,9 +5,9 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
+import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ktx.database
@@ -64,7 +64,7 @@ class PostDetailActivity : AppCompatActivity() {
                 if (task.isSuccessful) {
                     val comment = task.result.getValue(Comment::class.java)
                     if (comment?.comment !=null && comment.comment !="" ) {
-                        binding.postdetailTvCommentdetail.text = "답변 내용 : ${comment!!.comment}"
+                        binding.postdetailTvCommentdetail.text = comment.comment
                         binding.postdetailClComment.visibility = View.VISIBLE
 
                         if (loginMode == "Manager"){
@@ -120,10 +120,10 @@ class PostDetailActivity : AppCompatActivity() {
                         postRef.child(post.postId).removeValue()
                         //comment 삭제
                         commentRef.child(post.postCommentId).removeValue()
-                        Toast.makeText(this@PostDetailActivity, "삭제 완료", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@PostDetailActivity, "게시글이 삭제되었습니다.", Toast.LENGTH_SHORT).show()
                         finish()
                     } else { // 게시물 비밀번호 다를 경우
-                        Toast.makeText(this@PostDetailActivity, "비밀번호가 틀렸습니다.", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@PostDetailActivity, "잘못된 비밀번호입니다..", Toast.LENGTH_SHORT).show()
                     }
                 }
             })
@@ -149,7 +149,7 @@ class PostDetailActivity : AppCompatActivity() {
                         //post 삭제
                         finish()
                     } else { // 게시물 비밀번호 다를 경우
-                        Toast.makeText(this@PostDetailActivity, "게시물 비밀번호가 틀렸습니다.", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@PostDetailActivity, "잘못된 비밀번호입니다.", Toast.LENGTH_SHORT).show()
                     }
                 }
             })
@@ -164,25 +164,45 @@ class PostDetailActivity : AppCompatActivity() {
             dialog.showDialog()
             dialog.setOnClickListner(object : CommentDialog.ButtonClickListener {
                 override fun onClicked(text: String) {
-                    postRef.child(post.postId).child("postCommentId").setValue(commentKey)
-                    comment.postId = post.postId
-                    comment.comment = text
-                    comment.commentId = commentKey
-                    commentRef.child(commentKey).setValue(comment)
-                    Toast.makeText(this@PostDetailActivity, "Comment 등록 완료", Toast.LENGTH_SHORT).show()
-                    finish()
-
+                    if (text == "") {
+                        Toast.makeText(this@PostDetailActivity, "내용을 입력해주세요.", Toast.LENGTH_SHORT).show()
+                    } else {
+                        postRef.child(post.postId).child("postCommentId").setValue(commentKey)
+                        comment.postId = post.postId
+                        comment.comment = text
+                        comment.commentId = commentKey
+                        commentRef.child(commentKey).setValue(comment)
+                        Toast.makeText(this@PostDetailActivity, "답변이 등록되었습니다.", Toast.LENGTH_SHORT)
+                            .show()
+                        finish()
+                    }
                 }
             })
 
         }
         binding.postdetailBtnCommentdelete.setOnClickListener {
-            if (binding.postdetailTvCommentdetail.text.toString() != ""){
-                commentRef.child(post.postCommentId).removeValue()
-                Toast.makeText(this, "Comment 삭제 완료", Toast.LENGTH_SHORT).show()
-                finish()
-
+            // 체크 박스
+            val dialogView = View.inflate(this, R.layout.check_dialog, null)
+            val check = AlertDialog.Builder(this)
+            val dlg = check.create()
+            val check_ok_btn = dialogView.findViewById<TextView>(R.id.checkdialog_btn_ok)
+            val check_cancel_btn =
+                dialogView.findViewById<TextView>(R.id.checkdialog_btn_cancel)
+            val check_tv = dialogView.findViewById<TextView>(R.id.checkdialog_tv_title)
+            check_tv.text = "답변을 삭제하시겠습니까?"
+            check_cancel_btn.setOnClickListener { dlg.dismiss() }
+            // 확인 버튼
+            check_ok_btn.setOnClickListener {
+                if (binding.postdetailTvCommentdetail.text.toString() != ""){
+                    commentRef.child(post.postCommentId).removeValue()
+                    Toast.makeText(this, "답변이 삭제되었습니다.", Toast.LENGTH_SHORT).show()
+                    finish()
+                } else {
+                    Toast.makeText(this, "삭제 중 오류가 발생했습니다. 다시 시도해 주세요.", Toast.LENGTH_SHORT).show()
+                }
             }
+            dlg.setView(dialogView)
+            dlg.show()
         }
 
         binding.postdetailBtnBack.setOnClickListener {

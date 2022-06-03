@@ -38,6 +38,7 @@
                     app:layout_constraintStart_toStartOf="parent" />
 
                 <TextView
+                    android:id="@+id/post_tv_subject"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/pretendard_medium"
@@ -72,6 +73,8 @@
                 android:background="@drawable/d_post_et_regular"
                 android:fontFamily="@font/pretendard_regular"
                 android:hint="제목을 입력하세요."
+                android:maxLength="20"
+                android:singleLine="true"
                 android:includeFontPadding="false"
                 android:padding="10dp"
                 android:textColor="@color/colorBlack"
@@ -100,7 +103,7 @@
                 android:layout_height="38dp"
                 android:layout_marginTop="12dp"
                 android:background="@drawable/d_post_et_regular"
-                android:ems="10"
+                android:maxLength="10"
                 android:fontFamily="@font/pretendard_regular"
                 android:hint="비밀번호를 입력하세요."
                 android:includeFontPadding="false"
@@ -135,9 +138,9 @@
                 android:background="@drawable/d_post_et_big"
                 android:fontFamily="@font/pretendard_regular"
                 android:gravity="start|top"
-                android:hint="내용을 입력하세요."
+                android:hint="문의 또는 건의사항을 입력하세요."
                 android:includeFontPadding="false"
-                android:padding="10dp"
+                android:padding="11dp"
                 android:textColor="@color/colorBlack"
                 android:textColorHint="@color/colorGray"
                 android:textSize="16sp"
@@ -147,7 +150,6 @@
                 app:layout_constraintTop_toBottomOf="@id/post_tv_content"
                 app:layout_constraintVertical_bias="0" />
 
-            <!-- 그림자 적용 필요 -->
             <Button
                 android:id="@+id/post_btn_post"
                 android:layout_width="344dp"
@@ -159,12 +161,13 @@
                 android:paddingTop="1dp"
                 android:paddingStart="1dp"
                 android:text="게시글 등록"
-                android:textColor="@drawable/tv_d_buttontext"
+                android:textColor="@drawable/tv_d_buttontext_primary"
                 android:textSize="15sp"
                 android:background="@drawable/d_post_btn_post"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
+
             <Button
                 android:id="@+id/post_btn_Edit"
                 android:layout_width="344dp"
@@ -174,7 +177,7 @@
                 android:fontFamily="@font/pretendard_semibold"
                 android:includeFontPadding="false"
                 android:text="게시글 수정"
-                android:textColor="@drawable/tv_d_buttontext"
+                android:textColor="@drawable/tv_d_buttontext_primary"
                 android:textSize="15sp"
                 android:background="@drawable/d_post_btn_post"
                 app:layout_constraintBottom_toBottomOf="parent"

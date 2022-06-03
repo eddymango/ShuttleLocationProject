@@ -1,20 +1,16 @@
 package kr.rabbito.shuttlelocationproject
 
 import android.content.Context
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import com.google.firebase.database.FirebaseDatabase
+import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.ktx.database
-import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
-import kr.rabbito.shuttlelocationproject.data.Comment
 import kr.rabbito.shuttlelocationproject.data.ManagerDialog
-import kr.rabbito.shuttlelocationproject.databinding.ActivityMainBinding
 import kr.rabbito.shuttlelocationproject.databinding.ActivitySettingBinding
 import kr.rabbito.shuttlelocationproject.function.hashSHA256
 

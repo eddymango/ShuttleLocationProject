@@ -2,6 +2,8 @@ package kr.rabbito.shuttlelocationproject.data
 
 import android.app.Dialog
 import android.content.Context
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.WindowManager
 import android.widget.Button
 import android.widget.EditText
@@ -16,6 +18,26 @@ class CommentDialog(context:Context) {
         val editText = dialog.findViewById<EditText>(R.id.commentdialog_et_comment)
         val okBtn = dialog.findViewById<TextView>(R.id.commentdialog_btn_ok)
         val cancelBtn = dialog.findViewById<TextView>(R.id.commentdialog_btn_cancle)
+
+        editText.addTextChangedListener(object : TextWatcher {
+            var prev = ""
+
+            override fun afterTextChanged(p0: Editable?) {
+                if (editText.lineCount >= 8) {
+                    editText.setText(prev)
+                    editText.setSelection(editText.length())
+                }
+            }
+
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                prev = p0.toString()
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+            }
+        })
+
         // dialog 크기 조절
         dialog.window!!.setLayout(
             WindowManager.LayoutParams.MATCH_PARENT,

@@ -20,7 +20,6 @@
             android:layout_height="wrap_content">
 
 
-
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/postdetail_cl_top"
                 android:layout_width="match_parent"
@@ -65,28 +64,34 @@
 
             <TextView
                 android:id="@+id/postdetail_tv_title"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="31dp"
-                android:layout_marginTop="27dp"
+                android:layout_marginHorizontal="31dp"
+                android:layout_marginVertical="27dp"
                 android:fontFamily="@font/pretendard_semibold"
                 android:includeFontPadding="false"
                 android:text=""
                 android:textColor="@color/colorBlack"
                 android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@id/postdetail_iv_content"
+                app:layout_constraintEnd_toEndOf="@id/postdetail_iv_content"
+                app:layout_constraintHorizontal_bias="0"
                 app:layout_constraintStart_toStartOf="@id/postdetail_iv_content"
-                app:layout_constraintTop_toTopOf="@id/postdetail_iv_content" />
+                app:layout_constraintTop_toTopOf="@id/postdetail_iv_content"
+                app:layout_constraintVertical_bias="0" />
 
             <TextView
                 android:id="@+id/postdetail_tv_content"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="36dp"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginVertical="36dp"
                 android:fontFamily="@font/pretendard_regular"
                 android:includeFontPadding="false"
                 android:text=""
                 android:textColor="@color/colorBlack"
                 android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@id/postdetail_tv_title"
+                app:layout_constraintBottom_toBottomOf="@id/postdetail_iv_content"
                 app:layout_constraintStart_toStartOf="@id/postdetail_tv_title"
                 app:layout_constraintTop_toBottomOf="@id/postdetail_tv_title" />
 
@@ -116,11 +121,10 @@
 
                 <TextView
                     android:id="@+id/postdetail_tv_commentdetail"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="35dp"
-                    android:layout_marginTop="27dp"
-                    android:layout_marginEnd="35dp"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginHorizontal="31dp"
+                    android:layout_marginVertical="27dp"
                     android:fontFamily="@font/pretendard_regular"
                     android:gravity="start"
                     android:includeFontPadding="false"
@@ -128,6 +132,7 @@
                     android:paddingTop="2dp"
                     android:textColor="@color/colorBlack"
                     android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0"
                     app:layout_constraintStart_toStartOf="parent"
@@ -155,7 +160,6 @@
                 android:id="@+id/postdetail_btn_edit"
                 android:layout_width="136dp"
                 android:layout_height="74dp"
-                android:layout_marginEnd="122dp"
                 android:background="@drawable/d_postdetail_btn"
                 android:fontFamily="@font/pretendard_semibold"
                 android:includeFontPadding="false"
@@ -165,22 +169,23 @@
                 android:textColor="@drawable/tv_d_buttontext_primary"
                 android:textSize="13sp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@id/postdetail_btn_delete" />
+
             <Button
                 android:id="@+id/postdetail_btn_commentdelete"
                 android:layout_width="136dp"
                 android:layout_height="74dp"
-                android:layout_marginEnd="22dp"
+                android:layout_marginStart="6dp"
                 android:background="@drawable/d_postdetail_btn"
                 android:fontFamily="@font/pretendard_semibold"
                 android:includeFontPadding="false"
                 android:paddingStart="3dp"
                 android:paddingTop="3dp"
-                android:text="댓글 삭제"
+                android:text="답변 삭제"
                 android:textColor="@drawable/tv_d_buttontext_red"
                 android:textSize="13sp"
                 android:visibility="invisible"
-                app:layout_constraintEnd_toStartOf="@id/postdetail_btn_edit"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@id/postdetail_btn_edit" />
 
@@ -188,17 +193,17 @@
                 android:id="@+id/postdetail_btn_comment"
                 android:layout_width="136dp"
                 android:layout_height="74dp"
-                android:layout_marginEnd="22dp"
+                android:layout_marginStart="6dp"
                 android:background="@drawable/d_postdetail_btn"
                 android:fontFamily="@font/pretendard_semibold"
                 android:includeFontPadding="false"
                 android:paddingStart="3dp"
                 android:paddingTop="3dp"
-                android:text="댓글 등록"
+                android:text="답변 등록"
                 android:textColor="@drawable/tv_d_buttontext_primary"
                 android:textSize="13sp"
                 android:visibility="invisible"
-                app:layout_constraintEnd_toStartOf="@id/postdetail_btn_edit"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@id/postdetail_btn_edit" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
