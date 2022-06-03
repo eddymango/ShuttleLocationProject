@@ -40,8 +40,8 @@
 
         <Button
             android:id="@+id/community_btn_post"
-            android:layout_width="20dp"
-            android:layout_height="19dp"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
             android:layout_marginEnd="22dp"
             android:background="@drawable/icon_post"
             app:layout_constraintEnd_toEndOf="parent"

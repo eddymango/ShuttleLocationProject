@@ -80,6 +80,7 @@
                     app:layout_constraintTop_toTopOf="@id/setting_iv_content_admin" />
 
                 <TextView
+                    android:id="@+id/setting_tv_admin"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="86dp"
@@ -93,6 +94,7 @@
                     app:layout_constraintTop_toTopOf="@id/setting_iv_content_admin" />
 
                 <TextView
+                    android:id="@+id/setting_tv_admin_sub"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="86dp"

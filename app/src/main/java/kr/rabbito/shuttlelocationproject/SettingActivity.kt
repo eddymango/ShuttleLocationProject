@@ -18,8 +18,8 @@ class SettingActivity : AppCompatActivity() {
     private var mBinding: ActivitySettingBinding? = null
     private val binding get() = mBinding!!
 
-    val TAG :String= "TAG"
-    val pwdPath = listOf("1","2","3","4","5","6")
+    val TAG: String = "TAG"
+    val pwdPath = listOf("1", "2", "3", "4", "5", "6")
     val PWD = mutableListOf<String>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,50 +32,85 @@ class SettingActivity : AppCompatActivity() {
         val shared = getSharedPreferences("Mode", Context.MODE_PRIVATE)
         val editor = shared.edit()
 
-        for(i in pwdPath.indices){
+        var loginMode = shared.getString("UserMode", "User")
+
+        if (loginMode == "Manager") {
+            binding.settingTvAdmin.text = "관리자 로그아웃"
+            binding.settingTvAdminSub.text = "관리자 권한을 해제합니다."
+        } else {
+            binding.settingTvAdmin.text = "관리자 로그인"
+            binding.settingTvAdminSub.text = "게시물 답변 작성 권한을 획득합니다."
+        }
+
+        for (i in pwdPath.indices) {
             //루프 돌며 이미 등록되어 있는 관리자 비밀와 inputPassword 비교
-            Firebase.database.getReference("Manager").child("${i+1}").get()
+            Firebase.database.getReference("Manager").child("${i + 1}").get()
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
                         val dbPassword = task.result.value
-                        Log.d(TAG,"task.result.value : ${task.result.value}")
+                        Log.d(TAG, "task.result.value : ${task.result.value}")
                         PWD.add(dbPassword.toString())
-                    }}
+                    }
+                }
         }
         //Log.d(TAG,"PWD SIZE : ${PWD.size}")
 
         //관리자 로그인 버튼 클릭
         binding.settingClSettingAdmin.setOnClickListener {
-            val dialog = ManagerDialog(this)
-            dialog.showDialog()
-            dialog.setOnClickListner(object:ManagerDialog.ButtonClickListener{
-                override fun onClicked(text:String){
-                    //inputPassword : 사용자가 입력한 PWD
-                    val inputPassword = text.hashSHA256()
-                    //Log.d(TAG,"inputPassword : $inputPassword")
+            if (loginMode == "Manager") {
+                editor.putString("UserMode", "User")
+                loginMode = "User"
+                editor.apply()
 
-                    //Log.d(TAG,"hashPWD : ${inputPassword.hashSHA256()}")
+                Toast.makeText(
+                    this@SettingActivity,
+                    "로그아웃 되었습니다.",
+                    Toast.LENGTH_SHORT
+                ).show()
 
-                    //pwdPath : Firebase에 저장되어 있는 key 값
-                    //dbPassword : 이미 등록되어 있는 PWD.hashSHA226() 값
+                binding.settingTvAdmin.text = "관리자 로그인"
+                binding.settingTvAdminSub.text = "게시물 답변 작성 권한을 획득합니다."
+            } else {
+                val dialog = ManagerDialog(this)
+                dialog.showDialog()
+                dialog.setOnClickListner(object : ManagerDialog.ButtonClickListener {
+                    override fun onClicked(text: String) {
+                        //inputPassword : 사용자가 입력한 PWD
+                        val inputPassword = text.hashSHA256()
+                        //Log.d(TAG,"inputPassword : $inputPassword")
+
+                        //Log.d(TAG,"hashPWD : ${inputPassword.hashSHA256()}")
+
+                        //pwdPath : Firebase에 저장되어 있는 key 값
+                        //dbPassword : 이미 등록되어 있는 PWD.hashSHA226() 값
 
 
+                        //사용자 입력 비밀번호가 Manager PWD 리스트에 있는지 검사
+                        if (inputPassword in PWD) {
+                            editor.putString("UserMode", "Manager")
+                            editor.apply()
+                            loginMode = "Manager"
 
-                    //사용자 입력 비밀번호가 Manager PWD 리스트에 있는지 검사
-                    if (inputPassword in PWD) {
-                        editor.putString("UserMode", "Manager")
-                        editor.apply()
+                            Toast.makeText(
+                                this@SettingActivity,
+                                "관리자로 로그인 되었습니다.",
+                                Toast.LENGTH_SHORT
+                            )
+                                .show()
 
-                        Toast.makeText(this@SettingActivity, "관리자로 로그인 되었습니다.", Toast.LENGTH_SHORT)
-                            .show()
-                        finish()
+                            binding.settingTvAdmin.text = "관리자 로그아웃"
+                            binding.settingTvAdminSub.text = "관리자 권한을 해제합니다."
+                        } else {
+                            Toast.makeText(
+                                this@SettingActivity,
+                                "비밀번호가 일치하지 않습니다.",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+
                     }
-                    else{
-                            Toast.makeText(this@SettingActivity,"비밀번호가 일치하지 않습니다.",Toast.LENGTH_SHORT).show()
-                    }
-
-                }
-            })
+                })
+            }
         }
 
         binding.settingClSettingInfo.setOnClickListener {
