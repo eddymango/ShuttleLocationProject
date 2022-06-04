@@ -211,7 +211,14 @@ class PostDetailActivity : AppCompatActivity() {
                 if (binding.postdetailTvCommentdetail.text.toString() != ""){
                     commentRef.child(post.postCommentId).removeValue()
                     Toast.makeText(this, "답변이 삭제되었습니다.", Toast.LENGTH_SHORT).show()
+                    val tintent = Intent(this@PostDetailActivity, PostDetailActivity::class.java)
+
+                    val tmpbundle = Bundle()
+                    tmpbundle.putParcelable("selectedPost",post)
+                    tintent.putExtras(tmpbundle)
+
                     finish()
+                    startActivity(tintent)
                 } else {
                     Toast.makeText(this, "삭제 중 오류가 발생했습니다. 다시 시도해 주세요.", Toast.LENGTH_SHORT).show()
                 }
