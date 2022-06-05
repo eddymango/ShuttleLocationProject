@@ -38,8 +38,7 @@ class PostActivity : AppCompatActivity() {
                 postEtTitle.setText(tmpPost?.postTitle)
                 postEtContent.setText(tmpPost?.postContent)
                 //temp.postPassword = 암호화 알고리즘 적용된 비밀번호
-                postEtPassword.setText(intent.getStringExtra("PostPassword"))
-                Log.d(TAG,"postEtPassword : $postEtPassword")
+                postEtPassword.setText("")
             }
         }
 
@@ -68,8 +67,8 @@ class PostActivity : AppCompatActivity() {
 
         // user input -> Post -> Firebase 등록
         binding.postBtnPost.setOnClickListener {
-            if (binding.postEtTitle.text.toString() == "") {
-                Toast.makeText(this, "제목은 반드시 입력해야 합니다.", Toast.LENGTH_SHORT).show()
+            if (binding.postEtTitle.text.toString() == "" || binding.postEtPassword.text.toString() == "") {
+                Toast.makeText(this, "제목과 비밀번호는 반드시 입력해야 합니다.", Toast.LENGTH_SHORT).show()
             } else {
                 // 체크 박스
                 val dialogView = View.inflate(this, R.layout.check_dialog, null)

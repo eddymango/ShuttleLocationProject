@@ -18,7 +18,7 @@
         android:textColor="@color/colorBlack"
         android:textSize="16sp"
         android:hint="비밀번호를 입력하세요."
-        android:inputType="textPersonName"
+        android:inputType="numberPassword"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>

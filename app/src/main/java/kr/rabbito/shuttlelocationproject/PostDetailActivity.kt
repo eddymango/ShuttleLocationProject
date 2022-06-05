@@ -113,7 +113,7 @@ class PostDetailActivity : AppCompatActivity() {
             dialog.setOnClickListner(object : DeleteDialog.ButtonClickListener {
                 override fun onClicked(text: String) {
                     val inputPassword = text.hashSHA256()
-                    Toast.makeText(this@PostDetailActivity, inputPassword, Toast.LENGTH_SHORT).show()
+                    //Toast.makeText(this@PostDetailActivity, inputPassword, Toast.LENGTH_SHORT).show()
                     //입력한 비밀번호와 post에 저장되어 있는 게시물 비밀번호 같을 경우
                     if (inputPassword == post.postPassword) {
                         //post 삭제

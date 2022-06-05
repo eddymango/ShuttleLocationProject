@@ -194,7 +194,7 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
                 for (grant in grantResults) {
                     // 권한 획득하지 못한 경우
                     if (grant != PackageManager.PERMISSION_GRANTED) {
-                        Toast.makeText(this, "현위치 표시를 위해서는 위치 권한이 필요합니다.", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, "현위치 표시를 위해서는 정확한 위치 권한이 필요합니다.", Toast.LENGTH_SHORT).show()
                     } else {    // 권한 획득한 경우
                         if (ActivityCompat.checkSelfPermission(
                                 this,
