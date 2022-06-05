@@ -131,7 +131,7 @@
                 android:layout_width="334dp"
                 android:layout_height="198dp"
                 android:background="@drawable/detail_iv_rect_small"
-                android:visibility="gone"
+                android:visibility="visible"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/postdetail_iv_content">
@@ -155,6 +155,20 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
+                <TextView
+                    android:id="@+id/postdetail_tv_commentempty"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/pretendard_regular"
+                    android:text="답변이 등록되지 않았습니다."
+                    android:includeFontPadding="false"
+                    android:textColor="@color/colorGray"
+                    android:textSize="13sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <Button
@@ -171,7 +185,7 @@
                 android:text="답변 삭제"
                 android:textColor="@drawable/tv_d_buttontext_red"
                 android:textSize="13sp"
-                android:visibility="invisible"
+                android:visibility="gone"
                 app:layout_constraintTop_toBottomOf="@id/postdetail_cl_comment"
                 app:layout_constraintEnd_toEndOf="parent"/>
 
@@ -179,7 +193,8 @@
                 android:id="@+id/postdetail_btn_comment"
                 android:layout_width="136dp"
                 android:layout_height="74dp"
-                android:layout_marginStart="6dp"
+                android:layout_marginEnd="6dp"
+                android:layout_marginTop="1dp"
                 android:background="@drawable/d_postdetail_btn"
                 android:fontFamily="@font/pretendard_semibold"
                 android:includeFontPadding="false"
@@ -188,9 +203,9 @@
                 android:text="답변 등록"
                 android:textColor="@drawable/tv_d_buttontext_primary"
                 android:textSize="13sp"
-                android:visibility="invisible"
-                app:layout_constraintEnd_toEndOf="@id/postdetail_btn_commentdelete"
-                app:layout_constraintTop_toTopOf="@id/postdetail_btn_commentdelete"/>
+                android:visibility="gone"
+                app:layout_constraintTop_toBottomOf="@id/postdetail_cl_comment"
+                app:layout_constraintEnd_toEndOf="parent"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 

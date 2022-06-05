@@ -1,6 +1,7 @@
 package kr.rabbito.shuttlelocationproject
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -58,18 +59,35 @@ class SettingActivity : AppCompatActivity() {
         //관리자 로그인 버튼 클릭
         binding.settingClSettingAdmin.setOnClickListener {
             if (loginMode == "Manager") {
-                editor.putString("UserMode", "User")
-                loginMode = "User"
-                editor.apply()
+                // 체크 박스
+                val dialogView = View.inflate(this, R.layout.check_dialog, null)
+                val check = AlertDialog.Builder(this)
+                val dlg = check.create()
+                val check_ok_btn = dialogView.findViewById<TextView>(R.id.checkdialog_btn_ok)
+                val check_cancel_btn =
+                    dialogView.findViewById<TextView>(R.id.checkdialog_btn_cancel)
+                val check_tv = dialogView.findViewById<TextView>(R.id.checkdialog_tv_title)
+                check_tv.text = "로그아웃 하시겠습니까?"
+                check_cancel_btn.setOnClickListener { dlg.dismiss() }
+                // 확인 버튼
+                check_ok_btn.setOnClickListener {
+                    editor.putString("UserMode", "User")
+                    loginMode = "User"
+                    editor.apply()
 
-                Toast.makeText(
-                    this@SettingActivity,
-                    "로그아웃 되었습니다.",
-                    Toast.LENGTH_SHORT
-                ).show()
+                    Toast.makeText(
+                        this@SettingActivity,
+                        "로그아웃 되었습니다.",
+                        Toast.LENGTH_SHORT
+                    ).show()
 
-                binding.settingTvAdmin.text = "관리자 로그인"
-                binding.settingTvAdminSub.text = "게시물 답변 작성 권한을 획득합니다."
+                    binding.settingTvAdmin.text = "관리자 로그인"
+                    binding.settingTvAdminSub.text = "게시물 답변 작성 권한을 획득합니다."
+
+                    dlg.dismiss()
+                }
+                dlg.setView(dialogView)
+                dlg.show()
             } else {
                 val dialog = ManagerDialog(this)
                 dialog.showDialog()

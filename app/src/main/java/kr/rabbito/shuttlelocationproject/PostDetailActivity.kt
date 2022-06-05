@@ -52,7 +52,7 @@ class PostDetailActivity : AppCompatActivity() {
         }
         //UserMode : Manager
         else{
-            binding.postdetailBtnComment.visibility = View.INVISIBLE
+            binding.postdetailBtnComment.visibility = View.GONE
 
         }
 
@@ -65,16 +65,16 @@ class PostDetailActivity : AppCompatActivity() {
                     val comment = task.result.getValue(Comment::class.java)
                     if (comment?.comment !=null && comment.comment !="" ) {
                         binding.postdetailTvCommentdetail.text = comment.comment
-                        binding.postdetailClComment.visibility = View.VISIBLE
+                        binding.postdetailTvCommentempty.visibility = View.INVISIBLE
 
                         if (loginMode == "Manager"){
-                            binding.postdetailBtnComment.visibility = View.INVISIBLE
+                            binding.postdetailBtnComment.visibility = View.GONE
                             binding.postdetailBtnCommentdelete.visibility = View.VISIBLE
 
                         }
                         else{
-                            binding.postdetailBtnComment.visibility = View.INVISIBLE
-                            binding.postdetailBtnCommentdelete.visibility = View.INVISIBLE
+                            binding.postdetailBtnComment.visibility = View.GONE
+                            binding.postdetailBtnCommentdelete.visibility = View.GONE
 
                         }
                     }
@@ -234,8 +234,8 @@ class PostDetailActivity : AppCompatActivity() {
 
     override fun finish() {
         super.finish()
-        binding.postdetailClComment.visibility = View.INVISIBLE
-        binding.postdetailClComment.visibility = View.INVISIBLE
+        binding.postdetailTvCommentempty.visibility = View.VISIBLE
+        binding.postdetailTvCommentempty.visibility = View.VISIBLE
 
         overridePendingTransition(0, 0)
     }
