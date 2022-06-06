@@ -172,6 +172,24 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <Button
+                android:id="@+id/postdetail_btn_commentedit"
+                android:layout_width="136dp"
+                android:layout_height="74dp"
+                android:layout_marginEnd="122dp"
+                android:layout_marginTop="1dp"
+                android:background="@drawable/d_postdetail_btn"
+                android:fontFamily="@font/pretendard_semibold"
+                android:includeFontPadding="false"
+                android:paddingStart="3dp"
+                android:paddingTop="3dp"
+                android:text="답변 수정"
+                android:textColor="@drawable/tv_d_buttontext_primary"
+                android:textSize="13sp"
+                android:visibility="gone"
+                app:layout_constraintTop_toBottomOf="@id/postdetail_cl_comment"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <Button
                 android:id="@+id/postdetail_btn_commentdelete"
                 android:layout_width="136dp"
                 android:layout_height="74dp"

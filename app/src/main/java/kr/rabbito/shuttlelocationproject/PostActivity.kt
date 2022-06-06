@@ -19,6 +19,7 @@ class PostActivity : AppCompatActivity() {
     private var mBinding: ActivityPostBinding? = null
     private val binding get() = mBinding!!
     private val TAG="TAG"
+    private var commentId = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mBinding = ActivityPostBinding.inflate(layoutInflater)
@@ -34,6 +35,7 @@ class PostActivity : AppCompatActivity() {
             binding.postBtnEdit.visibility = View.VISIBLE
             val bundle = intent.extras
             val tmpPost = bundle?.getParcelable<Post>("post")
+            commentId = tmpPost!!.postCommentId
             with(binding){
                 postEtTitle.setText(tmpPost?.postTitle)
                 postEtContent.setText(tmpPost?.postContent)
@@ -103,34 +105,39 @@ class PostActivity : AppCompatActivity() {
         }
 
         binding.postBtnEdit.setOnClickListener {
-            val dialogView = View.inflate(this, R.layout.check_dialog, null)
-            val check = AlertDialog.Builder(this)
-            val dlg = check.create()
-            val check_ok_btn = dialogView.findViewById<TextView>(R.id.checkdialog_btn_ok)
-            val check_cancel_btn =
-                dialogView.findViewById<TextView>(R.id.checkdialog_btn_cancel)
-            val check_tv = dialogView.findViewById<TextView>(R.id.checkdialog_tv_title)
-            check_tv.text = "게시글을 수정하시겠습니까?"
-            check_cancel_btn.setOnClickListener { dlg.dismiss() }
-            // 확인 버튼
-            check_ok_btn.setOnClickListener {
-                val tmpPostId = intent.getStringExtra("PostId")
+            if (binding.postEtTitle.text.toString() == "" || binding.postEtPassword.text.toString() == "") {
+                Toast.makeText(this, "제목과 비밀번호는 반드시 입력해야 합니다.", Toast.LENGTH_SHORT).show()
+            } else {
+                val dialogView = View.inflate(this, R.layout.check_dialog, null)
+                val check = AlertDialog.Builder(this)
+                val dlg = check.create()
+                val check_ok_btn = dialogView.findViewById<TextView>(R.id.checkdialog_btn_ok)
+                val check_cancel_btn =
+                    dialogView.findViewById<TextView>(R.id.checkdialog_btn_cancel)
+                val check_tv = dialogView.findViewById<TextView>(R.id.checkdialog_tv_title)
+                check_tv.text = "게시글을 수정하시겠습니까?"
+                check_cancel_btn.setOnClickListener { dlg.dismiss() }
+                // 확인 버튼
+                check_ok_btn.setOnClickListener {
+                    val tmpPostId = intent.getStringExtra("PostId")
 
-                post.postTitle = binding.postEtTitle.text.toString()
-                post.postContent = binding.postEtContent.text.toString()
-                //password -> 암호화하여 등록
-                //사용자가 postActivity에서 비밀번호 새로 입력할 경우 다시 등록하도록 함
-                post.postPassword = binding.postEtPassword.text.toString().hashSHA256()
-                post.postDate = System.currentTimeMillis().toString()
-                post.postId = tmpPostId!!
+                    post.postTitle = binding.postEtTitle.text.toString()
+                    post.postContent = binding.postEtContent.text.toString()
+                    //password -> 암호화하여 등록
+                    //사용자가 postActivity에서 비밀번호 새로 입력할 경우 다시 등록하도록 함
+                    post.postPassword = binding.postEtPassword.text.toString().hashSHA256()
+                    post.postDate = System.currentTimeMillis().toString()
+                    post.postId = tmpPostId!!
+                    post.postCommentId = commentId
 
-                ref.child(post.postId).setValue(post)
-                intent.putExtra("EditPost",post)
-                Log.d(TAG,"EditPost password : $post.")
-                finish()
+                    ref.child(post.postId).setValue(post)
+                    intent.putExtra("EditPost", post)
+                    Log.d(TAG, "EditPost password : $post.")
+                    finish()
+                }
+                dlg.setView(dialogView)
+                dlg.show()
             }
-            dlg.setView(dialogView)
-            dlg.show()
         }
     }
 

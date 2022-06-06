@@ -33,6 +33,8 @@ import java.util.*
 class PostDetailActivity : AppCompatActivity() {
     private var mBinding: ActivityPostDetailBinding? = null
     private val binding get() = mBinding!!
+
+    private var commentResult: Comment? = null
     val TAG: String = "TAG"
     //private var time = SimpleDateFormat("yyyy년 MM월 dd일").format(Date())
 
@@ -62,20 +64,21 @@ class PostDetailActivity : AppCompatActivity() {
         Firebase.database.getReference("Community/Comment").child(post.postCommentId).get()
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    val comment = task.result.getValue(Comment::class.java)
-                    if (comment?.comment !=null && comment.comment !="" ) {
-                        binding.postdetailTvCommentdetail.text = comment.comment
+                    commentResult = task.result.getValue(Comment::class.java)
+                    if (commentResult?.comment !=null && commentResult?.comment !="" ) {
+                        binding.postdetailTvCommentdetail.text = commentResult!!.comment
                         binding.postdetailTvCommentempty.visibility = View.INVISIBLE
 
                         if (loginMode == "Manager"){
                             binding.postdetailBtnComment.visibility = View.GONE
                             binding.postdetailBtnCommentdelete.visibility = View.VISIBLE
+                            binding.postdetailBtnCommentedit.visibility = View.VISIBLE
 
                         }
                         else{
                             binding.postdetailBtnComment.visibility = View.GONE
                             binding.postdetailBtnCommentdelete.visibility = View.GONE
-
+                            binding.postdetailBtnCommentedit.visibility = View.GONE
                         }
                     }
                 }
@@ -162,10 +165,9 @@ class PostDetailActivity : AppCompatActivity() {
 
         //key == commentId / firebase upload
         binding.postdetailBtnComment.setOnClickListener {
-
             val dialog = CommentDialog(this@PostDetailActivity)
 
-            dialog.showDialog()
+            dialog.showDialog(null)
             dialog.setOnClickListner(object : CommentDialog.ButtonClickListener {
                 override fun onClicked(text: String) {
                     if (text == "") {
@@ -193,8 +195,42 @@ class PostDetailActivity : AppCompatActivity() {
                     }
                 }
             })
-
         }
+
+        binding.postdetailBtnCommentedit.setOnClickListener {
+            val dialog = CommentDialog(this@PostDetailActivity)
+            val key = post.postCommentId
+
+            dialog.showDialog(commentResult?.comment)
+            dialog.setOnClickListner(object : CommentDialog.ButtonClickListener {
+                override fun onClicked(text: String) {
+                    if (text == "") {
+                        Toast.makeText(this@PostDetailActivity, "내용을 입력해주세요.", Toast.LENGTH_SHORT).show()
+                    } else {
+                        postRef.child(post.postId).child("postCommentId").setValue(key)
+                        comment.postId = post.postId
+                        comment.comment = text
+                        comment.commentId = key
+                        commentRef.child(key).setValue(comment)
+                        post.postCommentId = comment.commentId
+
+                        val tintent = Intent(this@PostDetailActivity, PostDetailActivity::class.java)
+
+                        val tmpbundle = Bundle()
+                        tmpbundle.putParcelable("selectedPost",post)
+                        tintent.putExtras(tmpbundle)
+                        Toast.makeText(this@PostDetailActivity, "답변이 변경되었습니다.", Toast.LENGTH_SHORT)
+                            .show()
+
+
+                        finish()
+                        startActivity(tintent)
+
+                    }
+                }
+            })
+        }
+
         binding.postdetailBtnCommentdelete.setOnClickListener {
             // 체크 박스
             val dialogView = View.inflate(this, R.layout.check_dialog, null)

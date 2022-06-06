@@ -4,6 +4,7 @@ import android.app.Dialog
 import android.content.Context
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.WindowManager
 import android.widget.Button
 import android.widget.EditText
@@ -13,7 +14,7 @@ import kr.rabbito.shuttlelocationproject.R
 class CommentDialog(context:Context) {
 
     private val dialog  = Dialog(context)
-    fun showDialog(){
+    fun showDialog(comment: String?){
         dialog.setContentView(R.layout.comment_dialog)
         val editText = dialog.findViewById<EditText>(R.id.commentdialog_et_comment)
         val okBtn = dialog.findViewById<TextView>(R.id.commentdialog_btn_ok)
@@ -37,6 +38,11 @@ class CommentDialog(context:Context) {
 
             }
         })
+
+        if (comment != null) {
+            editText.setText(comment)
+            Log.d("comment", comment)
+        }
 
         // dialog 크기 조절
         dialog.window!!.setLayout(
